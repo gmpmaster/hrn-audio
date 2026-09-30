@@ -73,7 +73,7 @@ const opportunity = [
 
     <div class="wrap t-grid">
       {talent.map((t) => (
-        <article class="tc" style={`--c:${t.accent}`}>
+        <article class="tc" style={`--c:${t.accent};--c2:${t.accent2 ?? t.accent};--panel:${t.panel ?? t.accent}`}>
           <div class:list={['tc-art', { branded: !!t.cutout }]}>
             {t.cutout ? (
               <>
@@ -265,8 +265,11 @@ const opportunity = [
   /* branded panel: transparent cutout + show logo on the show's own colour */
   .tc-art.branded{aspect-ratio:1;overflow:hidden;
     background:
-      radial-gradient(120% 90% at 78% 8%, color-mix(in srgb, var(--c) 32%, #fff) 0%, transparent 62%),
-      linear-gradient(158deg, color-mix(in srgb, var(--c) 92%, #fff) 0%, var(--c) 55%, color-mix(in srgb, var(--c) 72%, #000) 100%);
+      radial-gradient(110% 80% at 78% 4%, color-mix(in srgb, #fff 42%, var(--panel)) 0%, transparent 56%),
+      linear-gradient(152deg,
+        color-mix(in srgb, var(--panel) 82%, #fff) 0%,
+        var(--panel) 52%,
+        color-mix(in srgb, var(--c2) 42%, var(--panel)) 100%);
   }
   .tc-art.branded .tc-cut{position:absolute;bottom:0;right:-6%;height:96%;width:auto;
     aspect-ratio:auto;object-fit:contain;object-position:bottom center;

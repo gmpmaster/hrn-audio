@@ -15,8 +15,8 @@
     "daypart": "Middays",
     "demo": "A 25–54",
     "credential": "Emmy Award-winning host · 89% U.S. coverage",
-    "accent": "#F66B03",
-    "audio": "/audio/echate-pa-ca.mp3",
+    "accent": "#07819B",
+    "audio": "/audio/echate-pa-ca-regmex.mp3",
     "photo": "/img/talent/ana-maria-canseco.jpg",
     "stats": [
       {
@@ -76,12 +76,14 @@
       }
     ],
     "logo": "/img/logos/echate-pa-ca.png",
-    "cutout": "/img/cutouts/ana-maria-1.webp",
+    "cutout": "/img/cutouts/echate-pa-ca-1.webp",
     "brand": {
       "teal": "#00A0BE",
       "orange": "#F66B03",
       "magenta": "#DD267C"
-    }
+    },
+    "accent2": "#F66B03",
+    "panel": "#72D5EC"
   },
   {
     "id": "buenas-tardes-el-patron",
