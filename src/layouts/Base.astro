@@ -1,0 +1,126 @@
+---
+import '../styles/global.css';
+
+interface Props { title: string; description: string; }
+const { title, description } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
+
+const nav = [
+  ['#talent', 'The Talent'],
+  ['#network', 'The Network'],
+  ['#buy', 'What You Can Buy'],
+  ['#opportunity', 'The Opportunity'],
+];
+---
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonical} />
+  <meta name="theme-color" content="#04080B" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={canonical} />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+</head>
+
+<body>
+  <a href="#main" class="skip">Skip to content</a>
+
+  <header class="nav" id="nav">
+    <div class="wrap nav-in">
+      <a href="/" class="logo" aria-label="HRN Audio — home">
+        <span class="lm">HRN</span><span class="ls">Audio</span>
+      </a>
+      <button class="burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="menu">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="links" id="menu" aria-label="Main">
+        {nav.map(([href, label]) => <a href={href}>{label}</a>)}
+        <a href="#contact" class="btn btn-primary nav-cta">Request a plan</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main"><slot /></main>
+
+  <footer class="ft">
+    <div class="wrap ft-in">
+      <div>
+        <div class="lm">HRN</div>
+        <div class="ls">Media Networks</div>
+        <p>Nationally syndicated Hispanic radio, carried by 345 affiliate stations
+           across 95 markets.</p>
+      </div>
+      <div class="ft-c">
+        <a href="tel:+18882717521">(888) 271-7521</a>
+        <a href="mailto:info@hrnmedianetworks.com">info@hrnmedianetworks.com</a>
+        <a href="https://hrnmedianetworks.com">hrnmedianetworks.com</a>
+      </div>
+    </div>
+    <div class="wrap"><p class="src">Copyright {new Date().getFullYear()} © HRN Media Networks. All rights reserved.</p></div>
+  </footer>
+
+  <style>
+    .nav{position:sticky;top:0;z-index:100;background:rgba(4,8,11,.82);
+         backdrop-filter:blur(14px);border-bottom:1px solid var(--line-d)}
+    .nav-in{display:flex;align-items:center;justify-content:space-between;height:var(--nav-h);gap:22px}
+    .logo{display:flex;align-items:baseline;gap:7px;text-decoration:none}
+    .lm{font-family:var(--head);font-weight:700;font-size:1.35rem;color:#fff;letter-spacing:-.01em}
+    .ls{font-family:var(--head);font-weight:500;font-size:.72rem;letter-spacing:.2em;
+        text-transform:uppercase;color:var(--cyan)}
+    .links{display:flex;align-items:center;gap:4px}
+    .links a{font-family:var(--head);font-size:.87rem;font-weight:500;color:#BCC8D2;
+             text-decoration:none;padding:9px 14px;border-radius:6px;transition:color .16s,background .16s}
+    .links a:hover{color:#fff;background:rgba(255,255,255,.07)}
+    .nav-cta{margin-left:10px;padding:11px 22px!important;color:var(--ink)!important}
+    .nav-cta:hover{color:var(--ink)!important}
+
+    .burger{display:none;flex-direction:column;gap:5px;background:none;border:0;cursor:pointer;padding:8px}
+    .burger span{display:block;width:24px;height:2px;background:#fff;transition:transform .2s,opacity .2s}
+    .burger[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+    .burger[aria-expanded="true"] span:nth-child(2){opacity:0}
+    .burger[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+    @media(max-width:940px){
+      .burger{display:flex}
+      .links{position:absolute;top:var(--nav-h);left:0;right:0;background:var(--ink);
+             flex-direction:column;align-items:stretch;padding:14px 26px 22px;
+             border-bottom:1px solid var(--line-d);display:none}
+      .links.open{display:flex}
+      .links a{padding:13px 10px;font-size:1rem}
+      .nav-cta{margin-left:0;margin-top:10px;text-align:center;justify-content:center}
+    }
+
+    .ft{background:var(--ink-2);padding:60px 0 30px;border-top:1px solid var(--line-d)}
+    .ft-in{display:grid;grid-template-columns:2fr 1fr;gap:40px}
+    @media(max-width:720px){.ft-in{grid-template-columns:1fr}}
+    .ft p{color:#8FA0AD;font-size:.92rem;margin-top:14px;max-width:44ch}
+    .ft-c{display:flex;flex-direction:column;gap:9px}
+    .ft-c a{color:#BCC8D2;text-decoration:none;font-size:.93rem}
+    .ft-c a:hover{color:var(--cyan)}
+  </style>
+
+  <script>
+    const b = document.getElementById('burger');
+    const m = document.getElementById('menu');
+    b?.addEventListener('click', () => {
+      const open = m?.classList.toggle('open');
+      b.setAttribute('aria-expanded', String(!!open));
+    });
+    m?.querySelectorAll('a').forEach((a) =>
+      a.addEventListener('click', () => {
+        m.classList.remove('open');
+        b?.setAttribute('aria-expanded', 'false');
+      })
+    );
+  </script>
+</body>
+</html>

@@ -1,0 +1,303 @@
+---
+import Base from '../layouts/Base.astro';
+import DemoPlayer from '../components/DemoPlayer.astro';
+import shows from '../data/shows.json';
+
+const talent = [...shows].sort((a, b) => a.order - b.order);
+
+const buy = [
+  ['Sponsorships', 'Own a segment, a feature or a tentpole moment, with billboards and named integration.'],
+  ['Live & host reads', 'The endorsement listeners already trust, read by the voice they trust it from.'],
+  ['National spots', ':30 and :60 across the full network, one buy, one report.'],
+  ['Custom networks', 'Station groupings built around a message, a category or a moment.'],
+  ['Talent activation', 'Hosts extending a campaign into their own social followings.'],
+  ['Digital audio', 'Streaming, podcast and companion display, planned by language.'],
+];
+
+const opportunity = [
+  ['20%', 'of the U.S. population is Hispanic', ''],
+  ['5th', 'largest GDP in the world if U.S. Hispanics were a country', 'Latino Donor Collaborative'],
+  ['~11 yrs', 'younger median age than the non-Hispanic white population', 'Pew Research'],
+  ['3.6%', 'of U.S. ad spend goes to Hispanic media', 'ANA / AIMM'],
+];
+---
+
+<Base
+  title="HRN Audio — Hear the shows Hispanic radio actually plays"
+  description="Nationally syndicated Hispanic radio from HRN Media Networks. Hear Ana Maria Canseco, El Patrón, DJ Xtreme, Los 40 USA and Juan Arango — 345 affiliates, 95 markets, 95% of U.S. Hispanics."
+>
+
+  <!-- ============================== HERO ============================== -->
+  <header class="hero">
+    <div class="hero-bg" aria-hidden="true"></div>
+    <div class="wrap hero-in">
+      <div class="hero-copy">
+        <p class="eyebrow">HRN Media Networks</p>
+        <h1>These are the voices<br />Hispanic America<br /><span class="hl">turns on.</span></h1>
+        <p class="lede">
+          Five nationally syndicated shows, carried by 345 affiliate stations across 95 markets.
+          Don't take our word for how they sound.
+        </p>
+        <div class="btn-row">
+          <a href="#talent" class="btn btn-primary">
+            <svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+            Hear the shows
+          </a>
+          <a href="#contact" class="btn btn-ghost">Request a plan</a>
+        </div>
+      </div>
+      <div class="hero-img">
+        <img src="/img/lineup.webp" width="2000" height="1167"
+             alt="HRN on-air talent: Ana Maria Canseco, El Patrón, DJ Xtreme, Sebas and Juan Arango" />
+      </div>
+    </div>
+
+    <div class="hero-strip">
+      <div class="wrap strip-in">
+        <div><span class="stat">345</span><span>affiliate stations</span></div>
+        <div><span class="stat">95</span><span>markets</span></div>
+        <div><span class="stat">95%</span><span>of U.S. Hispanics</span></div>
+        <div><span class="stat">#1</span><span>in 14 Hispanic DMAs</span></div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============================= TALENT ============================= -->
+  <section id="talent">
+    <div class="wrap center">
+      <p class="eyebrow">The talent</p>
+      <h2>Press play.</h2>
+      <p class="lede" style="margin-top:16px">
+        Every other audio network asks you to take reach on faith. Here is what the
+        programming actually sounds like.
+      </p>
+    </div>
+
+    <div class="wrap talent-list">
+      {talent.map((t, i) => (
+        <article class:list={['talent', { flip: i % 2 === 1 }]} style={`--accent:${t.accent}`}>
+          <div class="t-photo">
+            <div class="t-ring" aria-hidden="true"></div>
+            <img src={t.photo} alt={`${t.host}, host of ${t.show}`} loading="lazy"
+                 width="640" height="640" onerror="this.closest('.t-photo').classList.add('no-photo')" />
+            <span class="t-fallback" aria-hidden="true">{t.host.split(' ').map((n) => n[0]).join('')}</span>
+          </div>
+
+          <div class="t-body">
+            <p class="t-kicker">{t.credential}</p>
+            <h3 class="t-show">{t.show}</h3>
+            <p class="t-host">with {t.host}</p>
+            <p class="t-pitch">{t.pitch}</p>
+
+            <div class="t-meta">
+              <div><span class="k">Daypart</span><span class="v">{t.daypart}</span></div>
+              <div><span class="k">Length</span><span class="v">{t.length}</span></div>
+              <div><span class="k">Demo</span><span class="v">{t.demo}</span></div>
+              <div><span class="k">Formats</span><span class="v">{t.formats.join(', ')}</span></div>
+            </div>
+
+            <DemoPlayer src={t.audio} label={`${t.show} with ${t.host}`} accent={t.accent} id={t.id} />
+
+            <div class="t-stats">
+              {t.stats.map((s) => (
+                <div>
+                  <span class:list={['sv', { needs: s.needs }]}>{s.needs ? '—' : s.value}</span>
+                  <span class="sl">{s.label}{s.needs && <span class="flag" style="margin-left:6px">Need</span>}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <!-- ============================ NETWORK ============================= -->
+  <section id="network" class="mist">
+    <div class="wrap center">
+      <p class="eyebrow">The network</p>
+      <h2>Stations choose to carry these shows.</h2>
+      <p class="lede" style="margin-top:16px">
+        HRN represents nationally syndicated Hispanic programming. 345 stations signed on
+        because the shows perform for their audience — and they can drop them the moment
+        that stops. Affiliates are not bought. They opt in.
+      </p>
+      <p class="lede" style="margin-top:14px">
+        That is why a brand inside HRN programming arrives with the station's own
+        credibility attached. Ninety cents of every advertising dollar goes back to those
+        stations, 141 of which are minority-owned.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============================== BUY =============================== -->
+  <section id="buy">
+    <div class="wrap">
+      <div class="center">
+        <p class="eyebrow">What you can buy</p>
+        <h2>Six ways in.</h2>
+      </div>
+      <div class="grid g3" style="margin-top:52px">
+        {buy.map(([t, d]) => <div class="card"><h3>{t}</h3><p>{d}</p></div>)}
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================== OPPORTUNITY ========================== -->
+  <section id="opportunity" class="mist">
+    <div class="wrap">
+      <div class="center">
+        <p class="eyebrow">The opportunity</p>
+        <h2>The audience is growing. The spend isn't.</h2>
+        <p class="lede" style="margin-top:16px">
+          Hispanic audiences are younger, larger and more brand-loyal than the general
+          market — and still dramatically under-invested against.
+        </p>
+      </div>
+      <div class="grid g4 opp">
+        {opportunity.map(([v, l, src]) => (
+          <div>
+            <div class="stat opp-v">{v}</div>
+            <p class="opp-l">{l}</p>
+            {src && <p class="opp-s">{src}</p>}
+          </div>
+        ))}
+      </div>
+      <p class="src center" data-needs-content="sources">
+        <span class="flag">Verify</span>
+        Figures are drawn from public research and need a final source and date check before launch.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============================= CONTACT ============================ -->
+  <section id="contact" class="cta">
+    <div class="wrap center">
+      <p class="eyebrow">Let's talk</p>
+      <h2>Tell us who you need to reach.</h2>
+      <p class="lede" style="margin-top:16px">
+        We'll come back with the shows, the markets and the measurement — in writing.
+      </p>
+
+      <form name="audio-plan" method="POST" data-netlify="true" netlify-honeypot="company-url" class="f">
+        <input type="hidden" name="form-name" value="audio-plan" />
+        <p class="hp"><label>Do not fill this out: <input name="company-url" /></label></p>
+        <div class="f-row">
+          <input type="text" name="name" placeholder="Name" required aria-label="Name" />
+          <input type="email" name="email" placeholder="Email" required aria-label="Email" />
+        </div>
+        <div class="f-row">
+          <input type="text" name="company" placeholder="Company or agency" aria-label="Company or agency" />
+          <input type="tel" name="phone" placeholder="Phone" aria-label="Phone" />
+        </div>
+        <textarea name="message" placeholder="Who are you trying to reach?" aria-label="Message"></textarea>
+        <button type="submit" class="btn btn-primary">Request a plan</button>
+      </form>
+
+      <p class="src">Or call <a href="tel:+18882717521">(888) 271-7521</a></p>
+    </div>
+  </section>
+</Base>
+
+<style>
+  /* ---------------- hero ---------------- */
+  .hero{position:relative;overflow:hidden;padding-top:40px}
+  .hero-bg{position:absolute;inset:0;z-index:0;
+    background:
+      radial-gradient(1200px 700px at 72% 18%, rgba(0,167,226,.34), transparent 64%),
+      radial-gradient(900px 600px at 12% 88%, rgba(8,34,47,.9), transparent 70%),
+      linear-gradient(160deg,#04080B 0%,#07212E 52%,#04080B 100%);
+  }
+  .hero-bg:after{content:"";position:absolute;inset:0;
+    background:repeating-linear-gradient(90deg,rgba(255,255,255,.035) 0 2px,transparent 2px 14px)}
+  .hero-in{position:relative;z-index:1;display:grid;grid-template-columns:minmax(340px,.85fr) 1.25fr;
+           gap:10px;align-items:end;min-height:640px}
+  .hero-copy{padding:78px 0 96px}
+  .hero h1{margin-bottom:26px}
+  .hl{color:var(--cyan)}
+  .hero-img{align-self:end;margin:0 -80px -1px 0;min-width:0}
+  .hero-img img{width:100%;max-width:none;filter:drop-shadow(0 30px 60px rgba(0,0,0,.6))}
+  @media(min-width:1500px){.hero-img{margin-right:-140px}}
+  @media(max-width:980px){
+    .hero-in{grid-template-columns:1fr;min-height:0;gap:0}
+    .hero-copy{padding:44px 0 10px;text-align:center}
+    .hero .lede{margin-left:auto;margin-right:auto}
+    .hero .btn-row{justify-content:center}
+    .hero-img{margin:0 -26px -1px}
+  }
+
+  .hero-strip{position:relative;z-index:1;border-top:1px solid var(--line-d);
+              background:rgba(4,8,11,.6);backdrop-filter:blur(8px)}
+  .strip-in{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;padding:26px 26px}
+  @media(max-width:700px){.strip-in{grid-template-columns:repeat(2,1fr);gap:22px}}
+  .strip-in div{display:flex;flex-direction:column;gap:4px}
+  .strip-in .stat{font-size:2rem;color:var(--cyan)}
+  .strip-in span:last-child{font-size:.84rem;color:#8FA0AD}
+
+  /* ---------------- talent ---------------- */
+  .talent-list{display:flex;flex-direction:column;gap:30px;margin-top:64px}
+  .talent{display:grid;grid-template-columns:300px 1fr;gap:42px;align-items:center;
+          background:var(--ink-2);border:1px solid var(--line-d);border-radius:16px;
+          padding:34px 38px;position:relative;overflow:hidden}
+  .talent:before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--accent)}
+  .talent.flip{grid-template-columns:1fr 300px}
+  .talent.flip .t-photo{order:2}
+  @media(max-width:860px){
+    .talent,.talent.flip{grid-template-columns:1fr;gap:26px;padding:30px 24px}
+    .talent.flip .t-photo{order:0}
+  }
+
+  .t-photo{position:relative;width:260px;height:260px;justify-self:center;display:grid;place-items:center}
+  .t-ring{position:absolute;inset:0;border-radius:50%;
+          background:radial-gradient(circle at 50% 35%, color-mix(in srgb, var(--accent) 42%, transparent), transparent 68%);
+          border:2px solid color-mix(in srgb, var(--accent) 45%, transparent)}
+  .t-photo img{width:232px;height:232px;border-radius:50%;object-fit:cover;object-position:top center;
+               position:relative;z-index:1}
+  .t-fallback{display:none;position:relative;z-index:1;font-family:var(--head);font-weight:700;
+              font-size:3.4rem;color:var(--accent);letter-spacing:-.02em}
+  .t-photo.no-photo img{display:none}
+  .t-photo.no-photo .t-fallback{display:block}
+
+  .t-kicker{font-family:var(--head);font-size:.72rem;font-weight:600;letter-spacing:.15em;
+            text-transform:uppercase;color:var(--accent);margin:0 0 10px}
+  .t-show{font-size:clamp(1.5rem,2.8vw,2.1rem);font-weight:700;letter-spacing:-.02em;margin-bottom:3px}
+  .t-host{font-family:var(--head);font-size:1rem;color:#9FB0BC;margin:0 0 16px}
+  .t-pitch{font-size:1.02rem;color:#B6C4CE;margin-bottom:22px;max-width:60ch}
+
+  .t-meta{display:grid;grid-template-columns:repeat(4,auto);gap:22px;margin-bottom:22px;
+          justify-content:start}
+  @media(max-width:700px){.t-meta{grid-template-columns:repeat(2,1fr);gap:16px}}
+  .t-meta .k{display:block;font-family:var(--head);font-size:.66rem;font-weight:600;
+             letter-spacing:.14em;text-transform:uppercase;color:#6F7D89;margin-bottom:3px}
+  .t-meta .v{font-size:.9rem;color:#D3DDE4}
+
+  .t-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:22px;
+           padding-top:22px;border-top:1px solid var(--line-d)}
+  @media(max-width:700px){.t-stats{grid-template-columns:repeat(2,1fr)}}
+  .t-stats .sv{display:block;font-family:var(--head);font-weight:700;font-size:1.4rem;
+               color:var(--accent);line-height:1.1}
+  .t-stats .sv.needs{color:#E8A33D;opacity:.7}
+  .t-stats .sl{font-size:.78rem;color:#8FA0AD;line-height:1.4;display:block;margin-top:4px}
+
+  /* ---------------- opportunity ---------------- */
+  .opp{margin-top:52px}
+  .opp-v{font-size:2.6rem;color:var(--cyan-dk)}
+  .opp-l{font-size:.95rem;color:var(--slate);margin:10px 0 0}
+  .opp-s{font-size:.75rem;color:var(--slate-lt);margin:6px 0 0}
+
+  /* ---------------- contact ---------------- */
+  .cta{background:linear-gradient(165deg,#04080B 0%,#07212E 60%,#04080B 100%)}
+  .f{max-width:560px;margin:38px auto 0;display:grid;gap:14px}
+  .f-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media(max-width:560px){.f-row{grid-template-columns:1fr}}
+  .f input,.f textarea{font-family:var(--body);font-size:1rem;padding:15px 17px;
+    border:1px solid rgba(255,255,255,.16);border-radius:8px;background:rgba(255,255,255,.05);
+    color:#fff;width:100%}
+  .f input::placeholder,.f textarea::placeholder{color:#7E8C98}
+  .f input:focus,.f textarea:focus{outline:none;border-color:var(--cyan);
+    box-shadow:0 0 0 3px rgba(0,167,226,.2)}
+  .f textarea{min-height:120px;resize:vertical}
+  .f button{justify-self:center;margin-top:6px}
+  .hp{position:absolute;left:-9999px}
+  .cta .src a{color:var(--cyan);text-decoration:none}
+</style>

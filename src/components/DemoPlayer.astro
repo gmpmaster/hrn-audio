@@ -1,0 +1,149 @@
+---
+/* Demo player. Vanilla — no library.
+   Only one plays at a time across the page. Degrades to a disabled state when
+   the mp3 is missing, so the layout is honest until real demos land. */
+interface Props {
+  src: string;
+  label: string;
+  accent?: string;
+  id: string;
+}
+const { src, label, accent = '#00A7E2', id } = Astro.props;
+---
+
+<div class="player" data-player data-src={src} style={`--accent:${accent}`}>
+  <button class="play" type="button" aria-label={`Play demo: ${label}`} data-play>
+    <svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+    <svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
+    <svg class="i-load" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/></svg>
+  </button>
+
+  <div class="body">
+    <div class="top">
+      <span class="lbl">Hear the show</span>
+      <span class="time" data-time>0:00</span>
+    </div>
+    <div class="track" data-track role="slider" tabindex="0"
+         aria-label={`Seek within ${label} demo`} aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+      <div class="bar" data-bar></div>
+      <div class="wave" aria-hidden="true">
+        {Array.from({ length: 48 }).map((_, i) => (
+          <span style={`height:${22 + Math.abs(Math.sin(i * 0.9)) * 64 + (i % 4) * 5}%`}></span>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <audio preload="none" data-audio src={src}></audio>
+</div>
+
+<style>
+  .player{display:flex;align-items:center;gap:16px;background:rgba(255,255,255,.05);
+          border:1px solid rgba(255,255,255,.12);border-radius:999px;padding:10px 20px 10px 10px}
+  .player.missing{opacity:.5}
+
+  .play{width:48px;height:48px;flex:0 0 48px;border-radius:50%;border:0;cursor:pointer;
+        background:var(--accent);color:#04080B;display:grid;place-items:center;
+        transition:transform .16s,filter .16s}
+  .play:hover{transform:scale(1.07)}
+  .play:disabled{cursor:not-allowed;filter:grayscale(1)}
+  .play svg{width:22px;height:22px;fill:currentColor;grid-area:1/1}
+  .i-pause,.i-load{display:none}
+  .player.playing .i-play{display:none}
+  .player.playing .i-pause{display:block}
+  .player.loading .i-play,.player.loading .i-pause{display:none}
+  .player.loading .i-load{display:block;fill:none;stroke:currentColor;stroke-width:2.5;
+    stroke-dasharray:44;stroke-dashoffset:14;animation:spin .8s linear infinite}
+  @keyframes spin{to{transform:rotate(360deg)}}
+
+  .body{flex:1;min-width:0}
+  .top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:7px}
+  .lbl{font-family:var(--head);font-size:.68rem;font-weight:600;letter-spacing:.16em;
+       text-transform:uppercase;color:var(--accent)}
+  .time{font-family:var(--head);font-size:.74rem;color:#8FA0AD;font-variant-numeric:tabular-nums}
+
+  .track{position:relative;height:30px;cursor:pointer;display:flex;align-items:center}
+  .wave{position:absolute;inset:0;display:flex;align-items:center;gap:2px;pointer-events:none}
+  .wave span{flex:1;background:rgba(255,255,255,.18);border-radius:1px;min-height:3px}
+  .bar{position:absolute;left:0;top:0;bottom:0;width:0%;background:var(--accent);
+       opacity:.32;border-radius:3px;transition:width .1s linear;pointer-events:none}
+
+  .missing .lbl{color:#E8A33D}
+</style>
+
+<script>
+  const players = document.querySelectorAll<HTMLElement>('[data-player]');
+
+  players.forEach((p) => {
+    const audio = p.querySelector('audio') as HTMLAudioElement;
+    const btn = p.querySelector('[data-play]') as HTMLButtonElement;
+    const bar = p.querySelector('[data-bar]') as HTMLElement;
+    const time = p.querySelector('[data-time]') as HTMLElement;
+    const track = p.querySelector('[data-track]') as HTMLElement;
+    const lbl = p.querySelector('.lbl') as HTMLElement;
+
+    const fmt = (s: number) =>
+      !isFinite(s) ? '0:00' : `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, '0')}`;
+
+    // If the mp3 is not there yet, say so rather than failing silently.
+    let stall: ReturnType<typeof setTimeout> | undefined;
+    const markMissing = () => {
+      clearTimeout(stall);
+      p.classList.add('missing');
+      p.classList.remove('loading', 'playing');
+      btn.disabled = true;
+      lbl.textContent = 'Demo not uploaded yet';
+    };
+    audio.addEventListener('error', markMissing);
+    audio.addEventListener('stalled', markMissing);
+    // A 404 behind a dev server can hang rather than error; do not spin forever.
+    const armStall = () => { clearTimeout(stall); stall = setTimeout(markMissing, 3500); };
+
+    btn.addEventListener('click', () => {
+      if (audio.paused) {
+        document.querySelectorAll('audio').forEach((a) => {
+          if (a !== audio) { a.pause(); }
+        });
+        players.forEach((o) => o !== p && o.classList.remove('playing'));
+        p.classList.add('loading');
+        armStall();
+        audio.play().catch(() => {
+          p.classList.remove('loading');
+          p.classList.add('missing');
+          btn.disabled = true;
+          lbl.textContent = 'Demo not uploaded yet';
+        });
+      } else {
+        audio.pause();
+      }
+    });
+
+    audio.addEventListener('playing', () => { clearTimeout(stall); p.classList.remove('loading'); });
+    audio.addEventListener('play', () => p.classList.add('playing'));
+    audio.addEventListener('pause', () => p.classList.remove('playing', 'loading'));
+    audio.addEventListener('ended', () => {
+      p.classList.remove('playing');
+      bar.style.width = '0%';
+      time.textContent = fmt(audio.duration);
+    });
+    audio.addEventListener('loadedmetadata', () => { time.textContent = fmt(audio.duration); });
+    audio.addEventListener('timeupdate', () => {
+      const pct = (audio.currentTime / audio.duration) * 100;
+      bar.style.width = `${pct || 0}%`;
+      time.textContent = fmt(audio.duration - audio.currentTime);
+      track.setAttribute('aria-valuenow', String(Math.round(pct || 0)));
+    });
+
+    const seek = (clientX: number) => {
+      if (!audio.duration) return;
+      const r = track.getBoundingClientRect();
+      audio.currentTime = Math.min(Math.max((clientX - r.left) / r.width, 0), 1) * audio.duration;
+    };
+    track.addEventListener('click', (e) => seek((e as MouseEvent).clientX));
+    track.addEventListener('keydown', (e) => {
+      const k = (e as KeyboardEvent).key;
+      if (k === 'ArrowRight') { audio.currentTime = Math.min(audio.currentTime + 5, audio.duration); e.preventDefault(); }
+      if (k === 'ArrowLeft') { audio.currentTime = Math.max(audio.currentTime - 5, 0); e.preventDefault(); }
+    });
+  });
+</script>

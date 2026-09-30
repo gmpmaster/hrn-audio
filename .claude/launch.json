@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "hrn-audio",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["--prefix", "C:/Users/debdo/Projects/hrn-audio", "run", "dev", "--", "--port", "4322"],
+      "port": 4322
+    }
+  ]
+}
