@@ -15,7 +15,7 @@
     "daypart": "Middays",
     "demo": "A 25–54",
     "credential": "Emmy Award-winning host · 89% U.S. coverage",
-    "accent": "#07819B",
+    "accent": "#00C0E4",
     "audio": "/audio/echate-pa-ca-regmex.mp3",
     "photo": "/img/talent/ana-maria-canseco.jpg",
     "stats": [
@@ -83,7 +83,8 @@
       "magenta": "#DD267C"
     },
     "accent2": "#F66B03",
-    "panel": "#72D5EC"
+    "panel": "#72D5EC",
+    "accentText": "#07819B"
   },
   {
     "id": "buenas-tardes-el-patron",
@@ -159,7 +160,8 @@
       }
     ],
     "logo": "",
-    "cutout": ""
+    "cutout": "",
+    "accentText": "#E1343F"
   },
   {
     "id": "la-mezcla-fuego",
@@ -236,7 +238,8 @@
       }
     ],
     "logo": "",
-    "cutout": ""
+    "cutout": "",
+    "accentText": "#C42BA6"
   },
   {
     "id": "los-40-usa",
@@ -314,7 +317,8 @@
       }
     ],
     "logo": "",
-    "cutout": ""
+    "cutout": "",
+    "accentText": "#7C4DFF"
   },
   {
     "id": "minuto-deportivo",
@@ -390,6 +394,7 @@
       }
     ],
     "logo": "",
-    "cutout": ""
+    "cutout": "",
+    "accentText": "#00B86B"
   }
 ]

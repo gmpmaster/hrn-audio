@@ -73,7 +73,7 @@ const opportunity = [
 
     <div class="wrap t-grid">
       {talent.map((t) => (
-        <article class="tc" style={`--c:${t.accent};--c2:${t.accent2 ?? t.accent};--panel:${t.panel ?? t.accent}`}>
+        <article class="tc" style={`--c:${t.accent};--ct:${t.accentText ?? t.accent};--c2:${t.accent2 ?? t.accent};--panel:${t.panel ?? t.accent}`}>
           <div class:list={['tc-art', { branded: !!t.cutout }]}>
             {t.cutout ? (
               <>
@@ -280,14 +280,14 @@ const opportunity = [
   .tc-body{padding:22px 22px 24px;display:flex;flex-direction:column;flex:1}
 
   .tc-kicker{font-family:var(--head);font-size:.66rem;font-weight:700;letter-spacing:.13em;
-             text-transform:uppercase;color:var(--c);margin:0 0 8px;min-height:2.1em;line-height:1.4}
+             text-transform:uppercase;color:var(--ct);margin:0 0 8px;min-height:2.1em;line-height:1.4}
   .tc-show{font-size:1.32rem;font-weight:700;letter-spacing:-.02em;margin-bottom:2px;line-height:1.2}
   .tc-host{font-family:var(--head);font-size:.92rem;color:var(--slate);margin:0 0 16px}
 
   .tc-stats{display:grid;grid-template-columns:1fr 1fr;gap:14px;padding:16px 0;
             border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-bottom:14px}
   .tc-stats .sv{display:block;font-family:var(--head);font-weight:700;font-size:1.3rem;
-                color:var(--c);line-height:1.1}
+                color:var(--ct);line-height:1.1}
   .tc-stats .sl{font-size:.72rem;color:var(--slate);line-height:1.35;display:block;margin-top:3px}
   .tc-stats .flag{margin-left:5px}
 
