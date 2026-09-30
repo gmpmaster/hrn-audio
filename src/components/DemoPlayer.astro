@@ -86,20 +86,33 @@ const { src, label, accent = '#00A7E2', compact = false, variant, unavailable = 
   .missing .lbl{color:#8A5B10}
 
   /* ---------------- compact: overlays the artwork ---------------- */
-  .player.compact{position:absolute;left:0;right:0;bottom:0;z-index:2;
-    display:flex;align-items:center;gap:11px;padding:16px 16px 18px;
-    background:linear-gradient(to top, rgba(8,16,22,.9) 0%, rgba(8,16,22,.62) 56%, transparent 100%)}
-  .player.compact .play{width:46px;height:46px;box-shadow:0 6px 18px -6px rgba(0,0,0,.65)}
-  .player.compact .play svg{width:21px;height:21px}
-  .c-label{font-family:var(--head);font-size:.79rem;font-weight:700;letter-spacing:.05em;
-           color:#fff;flex:1;min-width:0;text-shadow:0 1px 4px rgba(0,0,0,.55)}
-  .player.compact .time{color:rgba(255,255,255,.92);font-size:.76rem;
-                        text-shadow:0 1px 4px rgba(0,0,0,.55)}
-  .c-track{position:absolute;left:0;right:0;bottom:0;height:16px;cursor:pointer;z-index:3}
-  .c-bar-wrap{position:absolute;left:0;right:0;bottom:0;height:5px;background:rgba(255,255,255,.3)}
+  /* Covers the art but stays out of its way: control cluster top-right,
+     progress pinned to the very bottom edge. No scrim over the logo. */
+  .player.compact{position:absolute;inset:0;z-index:2;pointer-events:none;
+    display:flex;align-items:flex-start;justify-content:flex-end;gap:0;padding:14px}
+  .player.compact .play{width:52px;height:52px;pointer-events:auto;
+    box-shadow:0 8px 22px -6px rgba(0,0,0,.6), 0 0 0 4px rgba(255,255,255,.22)}
+  .player.compact .play svg{width:23px;height:23px}
+
+  .c-label{position:absolute;top:22px;right:78px;pointer-events:none;
+    font-family:var(--head);font-size:.7rem;font-weight:700;letter-spacing:.07em;
+    text-transform:uppercase;color:#fff;background:rgba(8,16,22,.6);
+    backdrop-filter:blur(6px);padding:6px 12px;border-radius:999px;white-space:nowrap;
+    opacity:0;transform:translateX(6px);transition:opacity .2s,transform .2s}
+  .tc:hover .c-label,.player.compact.playing .c-label{opacity:1;transform:none}
+
+  .player.compact .time{position:absolute;bottom:14px;right:14px;pointer-events:none;
+    font-size:.72rem;color:#fff;background:rgba(8,16,22,.6);backdrop-filter:blur(6px);
+    padding:4px 10px;border-radius:999px}
+  .player.compact .time:empty{display:none}
+
+  .c-track{position:absolute;left:0;right:0;bottom:0;height:14px;cursor:pointer;
+           pointer-events:auto;z-index:3}
+  .c-bar-wrap{position:absolute;left:0;right:0;bottom:0;height:5px;
+              background:rgba(255,255,255,.26)}
   .c-bar{height:100%;width:0%;background:var(--accent);transition:width .1s linear}
-  .player.compact.missing .play{background:rgba(255,255,255,.32)}
-  .player.compact.missing .c-label{color:#FFD79A}
+  .player.compact.missing .play{background:rgba(255,255,255,.4);box-shadow:none}
+  .player.compact.missing .c-label{opacity:1;transform:none;color:#FFD79A}
 </style>
 
 <script>

@@ -178,7 +178,7 @@
     "daypart": "Evenings / weekend",
     "demo": "A 18–34",
     "credential": "#1 Latin mix show in Miami",
-    "accent": "#C42BA6",
+    "accent": "#6033C4",
     "audio": "/audio/la-mezcla-fuego.mp3",
     "photo": "/img/talent/dj-xtreme.jpg",
     "stats": [
@@ -239,7 +239,7 @@
     ],
     "logo": "",
     "cutout": "",
-    "accentText": "#C42BA6"
+    "accentText": "#6033C4"
   },
   {
     "id": "los-40-usa",
@@ -257,7 +257,7 @@
     "daypart": "Weekend",
     "demo": "A 18–49",
     "credential": "The world's #1 Hispanic music brand",
-    "accent": "#7C4DFF",
+    "accent": "#C42BA6",
     "audio": "/audio/los-40-usa.mp3",
     "photo": "/img/talent/sebas.jpg",
     "stats": [
@@ -318,7 +318,7 @@
     ],
     "logo": "",
     "cutout": "",
-    "accentText": "#7C4DFF"
+    "accentText": "#C42BA6"
   },
   {
     "id": "minuto-deportivo",
