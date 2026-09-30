@@ -40,7 +40,41 @@
       }
     ],
     "hasDemo": true,
-    "audioAlt": "/audio/echate-pa-ca-regmex.mp3"
+    "audioAlt": "/audio/echate-pa-ca-regmex.mp3",
+    "cardStats": [
+      {
+        "value": "89%",
+        "label": "U.S. coverage",
+        "needs": false
+      },
+      {
+        "value": "",
+        "label": "weekly reach",
+        "needs": true
+      }
+    ],
+    "socials": [
+      {
+        "net": "instagram",
+        "url": "https://www.instagram.com/anamariacanseco/",
+        "followers": "334K"
+      },
+      {
+        "net": "facebook",
+        "url": "",
+        "followers": ""
+      },
+      {
+        "net": "tiktok",
+        "url": "",
+        "followers": ""
+      },
+      {
+        "net": "youtube",
+        "url": "",
+        "followers": ""
+      }
+    ]
   },
   {
     "id": "buenas-tardes-el-patron",
@@ -80,7 +114,41 @@
         "needs": true
       }
     ],
-    "hasDemo": false
+    "hasDemo": false,
+    "cardStats": [
+      {
+        "value": "4 hrs",
+        "label": "daily block",
+        "needs": false
+      },
+      {
+        "value": "",
+        "label": "weekly reach",
+        "needs": true
+      }
+    ],
+    "socials": [
+      {
+        "net": "instagram",
+        "url": "",
+        "followers": ""
+      },
+      {
+        "net": "facebook",
+        "url": "",
+        "followers": ""
+      },
+      {
+        "net": "tiktok",
+        "url": "",
+        "followers": ""
+      },
+      {
+        "net": "youtube",
+        "url": "",
+        "followers": ""
+      }
+    ]
   },
   {
     "id": "la-mezcla-fuego",
@@ -121,7 +189,41 @@
         "needs": true
       }
     ],
-    "hasDemo": true
+    "hasDemo": true,
+    "cardStats": [
+      {
+        "value": "#1",
+        "label": "mix show, Miami",
+        "needs": false
+      },
+      {
+        "value": "",
+        "label": "weekly reach",
+        "needs": true
+      }
+    ],
+    "socials": [
+      {
+        "net": "instagram",
+        "url": "https://www.instagram.com/soyeldj/",
+        "followers": ""
+      },
+      {
+        "net": "facebook",
+        "url": "https://www.facebook.com/soyeldj/",
+        "followers": ""
+      },
+      {
+        "net": "tiktok",
+        "url": "https://www.tiktok.com/@soyeldj",
+        "followers": ""
+      },
+      {
+        "net": "youtube",
+        "url": "https://www.youtube.com/user/djxincharge",
+        "followers": ""
+      }
+    ]
   },
   {
     "id": "los-40-usa",
@@ -163,7 +265,41 @@
         "needs": true
       }
     ],
-    "hasDemo": true
+    "hasDemo": true,
+    "cardStats": [
+      {
+        "value": "Global",
+        "label": "music brand",
+        "needs": false
+      },
+      {
+        "value": "",
+        "label": "weekly reach",
+        "needs": true
+      }
+    ],
+    "socials": [
+      {
+        "net": "instagram",
+        "url": "https://www.instagram.com/es.el.sebas/",
+        "followers": ""
+      },
+      {
+        "net": "facebook",
+        "url": "",
+        "followers": ""
+      },
+      {
+        "net": "tiktok",
+        "url": "",
+        "followers": ""
+      },
+      {
+        "net": "youtube",
+        "url": "",
+        "followers": ""
+      }
+    ]
   },
   {
     "id": "minuto-deportivo",
@@ -178,7 +314,7 @@
     "length": "60-second weekday vignettes",
     "daypart": "Multiple dayparts",
     "demo": "HA 25–54",
-    "credential": "Highest-frequency placement on the network",
+    "credential": "23 years on air · TUDN match commentator",
     "accent": "#00B86B",
     "audio": "/audio/minuto-deportivo.mp3",
     "photo": "/img/talent/juan-arango.jpg",
@@ -203,6 +339,40 @@
         "needs": true
       }
     ],
-    "hasDemo": true
+    "hasDemo": true,
+    "cardStats": [
+      {
+        "value": ":60",
+        "label": "daily vignette",
+        "needs": false
+      },
+      {
+        "value": "",
+        "label": "weekly reach",
+        "needs": true
+      }
+    ],
+    "socials": [
+      {
+        "net": "instagram",
+        "url": "",
+        "followers": ""
+      },
+      {
+        "net": "facebook",
+        "url": "",
+        "followers": ""
+      },
+      {
+        "net": "tiktok",
+        "url": "",
+        "followers": ""
+      },
+      {
+        "net": "youtube",
+        "url": "",
+        "followers": ""
+      }
+    ]
   }
 ]

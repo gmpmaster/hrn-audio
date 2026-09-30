@@ -1,57 +1,61 @@
 ---
 /* Demo player. Vanilla — no library.
-   Only one plays at a time across the page. Degrades to a disabled state when
-   the mp3 is missing, so the layout is honest until real demos land. */
+   compact = button + thin progress bar, sits over show artwork.
+   full    = button + waveform, for the programming page.
+   Only one plays at a time. Degrades honestly when the mp3 is missing. */
 interface Props {
   src: string;
   label: string;
   accent?: string;
-  id: string;
+  compact?: boolean;
   variant?: string;
+  unavailable?: boolean;
 }
-const { src, label, accent = '#00A7E2', id, variant } = Astro.props;
+const { src, label, accent = '#00A7E2', compact = false, variant, unavailable = false } = Astro.props;
 ---
 
-<div class="player" data-player data-src={src} style={`--accent:${accent}`}>
-  <button class="play" type="button" aria-label={`Play demo: ${label}`} data-play>
+<div class:list={['player', { compact, missing: unavailable }]} data-player data-unavailable={unavailable ? 'true' : undefined} style={`--accent:${accent}`}>
+  <button class="play" type="button" disabled={unavailable} aria-label={unavailable ? `Demo coming soon: ${label}` : `Play demo: ${label}`} data-play>
     <svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
     <svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
     <svg class="i-load" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/></svg>
   </button>
 
-  <div class="body">
-    <div class="top">
-      <span class="lbl">{variant ?? "Hear the show"}</span>
-      <span class="time" data-time>0:00</span>
-    </div>
-    <div class="track" data-track role="slider" tabindex="0"
-         aria-label={`Seek within ${label} demo`} aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
-      <div class="bar" data-bar></div>
-      <div class="wave" aria-hidden="true">
-        {Array.from({ length: 48 }).map((_, i) => (
-          <span style={`height:${22 + Math.abs(Math.sin(i * 0.9)) * 64 + (i % 4) * 5}%`}></span>
-        ))}
+  {compact ? (
+    <>
+      <span class="c-label" data-label>{unavailable ? "Demo coming soon" : "Hear the demo"}</span>
+      <span class="time" data-time></span>
+      <div class="c-track" data-track></div>
+      <div class="c-bar-wrap" aria-hidden="true"><div class="c-bar" data-bar></div></div>
+    </>
+  ) : (
+    <div class="body">
+      <div class="top">
+        <span class="lbl" data-label>{variant ?? 'Hear the show'}</span>
+        <span class="time" data-time>0:00</span>
+      </div>
+      <div class="track" data-track role="slider" tabindex="0"
+           aria-label={`Seek within ${label}`} aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+        <div class="bar" data-bar></div>
+        <div class="wave" aria-hidden="true">
+          {Array.from({ length: 44 }).map((_, i) => (
+            <span style={`height:${22 + Math.abs(Math.sin(i * 0.9)) * 64 + (i % 4) * 5}%`}></span>
+          ))}
+        </div>
       </div>
     </div>
-  </div>
+  )}
 
   <audio preload="none" data-audio src={src}></audio>
 </div>
 
 <style>
-  .player{display:flex;align-items:center;gap:16px;
-          background:color-mix(in srgb, var(--accent) 7%, #fff);
-          border:1px solid color-mix(in srgb, var(--accent) 22%, #fff);
-          border-radius:999px;padding:10px 22px 10px 10px;margin-bottom:10px}
-  .player.missing{background:#F6F8FA;border-color:var(--line)}
-
-  .play{width:50px;height:50px;flex:0 0 50px;border-radius:50%;border:0;cursor:pointer;
-        background:var(--accent);color:#fff;display:grid;place-items:center;
-        box-shadow:0 8px 20px -8px color-mix(in srgb, var(--accent) 80%, transparent);
-        transition:transform .16s,filter .16s}
-  .play:hover{transform:scale(1.07)}
-  .play:disabled{cursor:not-allowed;filter:grayscale(1)}
-  .play svg{width:22px;height:22px;fill:currentColor;grid-area:1/1}
+  .play{border:0;cursor:pointer;background:var(--accent);color:#fff;
+        display:grid;place-items:center;border-radius:50%;flex:0 0 auto;
+        transition:transform .16s,background .16s}
+  .play:hover{transform:scale(1.08)}
+  .play:disabled{cursor:not-allowed;background:#9FB0BC}
+  .play svg{fill:currentColor;grid-area:1/1}
   .i-pause,.i-load{display:none}
   .player.playing .i-play{display:none}
   .player.playing .i-pause{display:block}
@@ -60,64 +64,79 @@ const { src, label, accent = '#00A7E2', id, variant } = Astro.props;
     stroke-dasharray:44;stroke-dashoffset:14;animation:spin .8s linear infinite}
   @keyframes spin{to{transform:rotate(360deg)}}
 
+  /* ---------------- full ---------------- */
+  .player:not(.compact){display:flex;align-items:center;gap:16px;
+    background:color-mix(in srgb, var(--accent) 7%, #fff);
+    border:1px solid color-mix(in srgb, var(--accent) 22%, #fff);
+    border-radius:999px;padding:10px 22px 10px 10px;margin-bottom:10px}
+  .player:not(.compact) .play{width:50px;height:50px}
+  .player:not(.compact) .play svg{width:22px;height:22px}
   .body{flex:1;min-width:0}
   .top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:7px}
-  .lbl{font-family:var(--head);font-size:.68rem;font-weight:600;letter-spacing:.16em;
+  .lbl{font-family:var(--head);font-size:.68rem;font-weight:700;letter-spacing:.16em;
        text-transform:uppercase;color:var(--accent)}
-  .time{font-family:var(--head);font-size:.75rem;color:var(--slate);font-variant-numeric:tabular-nums}
-
+  .time{font-family:var(--head);font-size:.75rem;color:var(--slate);
+        font-variant-numeric:tabular-nums;white-space:nowrap}
   .track{position:relative;height:30px;cursor:pointer;display:flex;align-items:center}
   .wave{position:absolute;inset:0;display:flex;align-items:center;gap:2px;pointer-events:none}
   .wave span{flex:1;background:color-mix(in srgb, var(--accent) 26%, #fff);border-radius:1px;min-height:3px}
   .bar{position:absolute;left:0;top:0;bottom:0;width:0%;background:var(--accent);
        opacity:.26;border-radius:4px;transition:width .1s linear;pointer-events:none}
-
+  .player.missing:not(.compact){background:#F6F8FA;border-color:var(--line)}
   .missing .lbl{color:#8A5B10}
-  .missing .play{background:var(--slate-lt);box-shadow:none}
+
+  /* ---------------- compact: overlays the artwork ---------------- */
+  .player.compact{position:absolute;left:0;right:0;bottom:0;z-index:2;
+    display:flex;align-items:center;gap:11px;padding:16px 16px 18px;
+    background:linear-gradient(to top, rgba(8,16,22,.9) 0%, rgba(8,16,22,.62) 56%, transparent 100%)}
+  .player.compact .play{width:46px;height:46px;box-shadow:0 6px 18px -6px rgba(0,0,0,.65)}
+  .player.compact .play svg{width:21px;height:21px}
+  .c-label{font-family:var(--head);font-size:.79rem;font-weight:700;letter-spacing:.05em;
+           color:#fff;flex:1;min-width:0;text-shadow:0 1px 4px rgba(0,0,0,.55)}
+  .player.compact .time{color:rgba(255,255,255,.92);font-size:.76rem;
+                        text-shadow:0 1px 4px rgba(0,0,0,.55)}
+  .c-track{position:absolute;left:0;right:0;bottom:0;height:16px;cursor:pointer;z-index:3}
+  .c-bar-wrap{position:absolute;left:0;right:0;bottom:0;height:5px;background:rgba(255,255,255,.3)}
+  .c-bar{height:100%;width:0%;background:var(--accent);transition:width .1s linear}
+  .player.compact.missing .play{background:rgba(255,255,255,.32)}
+  .player.compact.missing .c-label{color:#FFD79A}
 </style>
 
 <script>
   const players = document.querySelectorAll<HTMLElement>('[data-player]');
 
   players.forEach((p) => {
+    if (p.dataset.unavailable === "true") return;
     const audio = p.querySelector('audio') as HTMLAudioElement;
     const btn = p.querySelector('[data-play]') as HTMLButtonElement;
-    const bar = p.querySelector('[data-bar]') as HTMLElement;
-    const time = p.querySelector('[data-time]') as HTMLElement;
-    const track = p.querySelector('[data-track]') as HTMLElement;
-    const lbl = p.querySelector('.lbl') as HTMLElement;
+    const bar = p.querySelector('[data-bar]') as HTMLElement | null;
+    const time = p.querySelector('[data-time]') as HTMLElement | null;
+    const track = p.querySelector('[data-track]') as HTMLElement | null;
+    const lbl = p.querySelector('[data-label]') as HTMLElement | null;
 
     const fmt = (s: number) =>
-      !isFinite(s) ? '0:00' : `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, '0')}`;
+      !isFinite(s) ? '' : `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, '0')}`;
 
-    // If the mp3 is not there yet, say so rather than failing silently.
     let stall: ReturnType<typeof setTimeout> | undefined;
     const markMissing = () => {
       clearTimeout(stall);
       p.classList.add('missing');
       p.classList.remove('loading', 'playing');
       btn.disabled = true;
-      lbl.textContent = 'Demo not uploaded yet';
+      if (lbl) lbl.textContent = 'Demo coming soon';
+      if (time) time.textContent = '';
     };
     audio.addEventListener('error', markMissing);
     audio.addEventListener('stalled', markMissing);
-    // A 404 behind a dev server can hang rather than error; do not spin forever.
-    const armStall = () => { clearTimeout(stall); stall = setTimeout(markMissing, 3500); };
+    const armStall = () => { clearTimeout(stall); stall = setTimeout(markMissing, 4000); };
 
     btn.addEventListener('click', () => {
       if (audio.paused) {
-        document.querySelectorAll('audio').forEach((a) => {
-          if (a !== audio) { a.pause(); }
-        });
+        document.querySelectorAll('audio').forEach((a) => { if (a !== audio) a.pause(); });
         players.forEach((o) => o !== p && o.classList.remove('playing'));
         p.classList.add('loading');
         armStall();
-        audio.play().catch(() => {
-          p.classList.remove('loading');
-          p.classList.add('missing');
-          btn.disabled = true;
-          lbl.textContent = 'Demo not uploaded yet';
-        });
+        audio.play().catch(markMissing);
       } else {
         audio.pause();
       }
@@ -128,24 +147,24 @@ const { src, label, accent = '#00A7E2', id, variant } = Astro.props;
     audio.addEventListener('pause', () => p.classList.remove('playing', 'loading'));
     audio.addEventListener('ended', () => {
       p.classList.remove('playing');
-      bar.style.width = '0%';
-      time.textContent = fmt(audio.duration);
+      if (bar) bar.style.width = '0%';
+      if (time) time.textContent = fmt(audio.duration);
     });
-    audio.addEventListener('loadedmetadata', () => { time.textContent = fmt(audio.duration); });
+    audio.addEventListener('loadedmetadata', () => { if (time) time.textContent = fmt(audio.duration); });
     audio.addEventListener('timeupdate', () => {
       const pct = (audio.currentTime / audio.duration) * 100;
-      bar.style.width = `${pct || 0}%`;
-      time.textContent = fmt(audio.duration - audio.currentTime);
-      track.setAttribute('aria-valuenow', String(Math.round(pct || 0)));
+      if (bar) bar.style.width = `${pct || 0}%`;
+      if (time) time.textContent = fmt(audio.duration - audio.currentTime);
+      track?.setAttribute('aria-valuenow', String(Math.round(pct || 0)));
     });
 
     const seek = (clientX: number) => {
-      if (!audio.duration) return;
+      if (!audio.duration || !track) return;
       const r = track.getBoundingClientRect();
       audio.currentTime = Math.min(Math.max((clientX - r.left) / r.width, 0), 1) * audio.duration;
     };
-    track.addEventListener('click', (e) => seek((e as MouseEvent).clientX));
-    track.addEventListener('keydown', (e) => {
+    track?.addEventListener('click', (e) => seek((e as MouseEvent).clientX));
+    track?.addEventListener('keydown', (e) => {
       const k = (e as KeyboardEvent).key;
       if (k === 'ArrowRight') { audio.currentTime = Math.min(audio.currentTime + 5, audio.duration); e.preventDefault(); }
       if (k === 'ArrowLeft') { audio.currentTime = Math.max(audio.currentTime - 5, 0); e.preventDefault(); }
