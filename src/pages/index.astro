@@ -69,6 +69,10 @@ const opportunity = [
         Every other audio network asks you to take reach on faith. Here is what the
         programming actually sounds like.
       </p>
+      <p class="follow" data-needs-content="follower-total">
+        <strong>1,946,700</strong> combined followers across our on-air talent
+        <span class="flag">Confirm</span>
+      </p>
     </div>
 
     <div class="wrap t-grid">
@@ -90,6 +94,7 @@ const opportunity = [
             <p class="tc-kicker">{t.credential}</p>
             <h3 class="tc-show">{t.show}</h3>
             <p class="tc-host">{t.host}</p>
+            <p class="tc-pitch">{t.tagline}</p>
 
             <div class="tc-stats">
               {t.cardStats.map((s) => (
@@ -250,10 +255,14 @@ const opportunity = [
   .btn-outline{background:rgba(255,255,255,.12);color:#fff;border-color:rgba(255,255,255,.6)}
   .btn-outline:hover{background:#fff;color:var(--ink);border-color:#fff}
 
+  .follow{margin:26px 0 0;font-family:var(--head);font-size:1.02rem;color:var(--slate)}
+  .follow strong{font-size:1.5rem;font-weight:700;color:var(--cyan-dk);
+                 font-variant-numeric:tabular-nums}
+
   /* ---------------- talent grid ---------------- */
-  .t-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:58px}
-  @media(max-width:1000px){.t-grid{grid-template-columns:repeat(2,1fr)}}
-  @media(max-width:640px){.t-grid{grid-template-columns:1fr}}
+  .t-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:32px;margin-top:58px;
+          max-width:1000px;margin-left:auto;margin-right:auto}
+  @media(max-width:760px){.t-grid{grid-template-columns:1fr;gap:26px}}
 
   .tc{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;
       display:flex;flex-direction:column;transition:transform .2s,box-shadow .2s;
@@ -279,12 +288,13 @@ const opportunity = [
   .tc-art.branded .tc-logo{position:absolute;top:7%;left:6%;width:46%;height:auto;
     aspect-ratio:auto;object-fit:contain;z-index:1;
     filter:drop-shadow(0 4px 10px rgba(0,0,0,.22))}
-  .tc-body{padding:22px 22px 24px;display:flex;flex-direction:column;flex:1}
+  .tc-body{padding:26px 26px 28px;display:flex;flex-direction:column;flex:1}
 
   .tc-kicker{font-family:var(--head);font-size:.66rem;font-weight:700;letter-spacing:.13em;
              text-transform:uppercase;color:var(--ct);margin:0 0 8px;min-height:2.1em;line-height:1.4}
-  .tc-show{font-size:1.32rem;font-weight:700;letter-spacing:-.02em;margin-bottom:2px;line-height:1.2}
-  .tc-host{font-family:var(--head);font-size:.92rem;color:var(--slate);margin:0 0 16px}
+  .tc-show{font-size:1.55rem;font-weight:700;letter-spacing:-.022em;margin-bottom:3px;line-height:1.18}
+  .tc-host{font-family:var(--head);font-size:.95rem;color:var(--slate);margin:0 0 12px}
+  .tc-pitch{font-size:.95rem;color:var(--ink-soft);margin:0 0 18px;line-height:1.6}
 
   .tc-stats{display:grid;grid-template-columns:1fr 1fr;gap:14px;padding:16px 0;
             border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-bottom:14px}

@@ -89,20 +89,20 @@ const { src, label, accent = '#00A7E2', compact = false, variant, unavailable = 
   /* Covers the art but stays out of its way: control cluster top-right,
      progress pinned to the very bottom edge. No scrim over the logo. */
   .player.compact{position:absolute;inset:0;z-index:2;pointer-events:none;
-    display:flex;align-items:flex-end;justify-content:flex-end;gap:0;padding:16px}
-  .player.compact .play{width:52px;height:52px;pointer-events:auto;
+    display:flex;align-items:flex-end;justify-content:flex-start;gap:0;padding:16px}
+  .player.compact .play{width:58px;height:58px;pointer-events:auto;
     box-shadow:0 8px 22px -6px rgba(0,0,0,.6), 0 0 0 4px rgba(255,255,255,.22)}
-  .player.compact .play svg{width:23px;height:23px}
+  .player.compact .play svg{width:26px;height:26px}
 
   /* label and remaining time bracket from the bottom-left, clear of the button */
-  .c-label{position:absolute;left:16px;bottom:22px;pointer-events:none;
-    font-family:var(--head);font-size:.7rem;font-weight:700;letter-spacing:.07em;
+  .c-label{position:absolute;right:16px;bottom:22px;pointer-events:none;
+    font-family:var(--head);font-size:.72rem;font-weight:700;letter-spacing:.07em;
     text-transform:uppercase;color:#fff;background:rgba(8,16,22,.62);
-    backdrop-filter:blur(6px);padding:6px 12px;border-radius:999px;white-space:nowrap;
+    backdrop-filter:blur(6px);padding:7px 14px;border-radius:999px;white-space:nowrap;
     opacity:0;transform:translateY(5px);transition:opacity .2s,transform .2s}
   .tc:hover .c-label,.player.compact.playing .c-label{opacity:1;transform:none}
 
-  .player.compact .time{position:absolute;left:16px;bottom:22px;pointer-events:none;
+  .player.compact .time{position:absolute;right:16px;bottom:22px;pointer-events:none;
     font-size:.72rem;font-weight:700;color:#fff;background:rgba(8,16,22,.62);
     backdrop-filter:blur(6px);padding:6px 11px;border-radius:999px;
     opacity:0;transition:opacity .2s}
