@@ -6,12 +6,12 @@ import shows from '../data/shows.json';
 const talent = [...shows].sort((a, b) => a.order - b.order);
 
 const buy = [
-  ['Sponsorships', 'Own a segment, a feature or a tentpole moment, with billboards and named integration.'],
-  ['Live & host reads', 'The endorsement listeners already trust, read by the voice they trust it from.'],
-  ['National spots', ':30 and :60 across the full network, one buy, one report.'],
-  ['Custom networks', 'Station groupings built around a message, a category or a moment.'],
-  ['Talent activation', 'Hosts extending a campaign into their own social followings.'],
-  ['Digital audio', 'Streaming, podcast and companion display, planned by language.'],
+  ['Sponsorships', 'Own a segment, a feature or a tentpole moment, with billboards and named integration.', 'var(--red)'],
+  ['Live & host reads', 'The endorsement listeners already trust, read by the voice they trust it from.', 'var(--amber)'],
+  ['National spots', ':30 and :60 across the full network. One buy, one report.', 'var(--magenta)'],
+  ['Custom networks', 'Station groupings built around a message, a category or a moment.', 'var(--violet)'],
+  ['Talent activation', 'Hosts extending a campaign into their own social followings.', 'var(--green)'],
+  ['Digital audio', 'Streaming, podcast and companion display, planned by language.', 'var(--cyan)'],
 ];
 
 const opportunity = [
@@ -24,7 +24,7 @@ const opportunity = [
 
 <Base
   title="HRN Audio — Hear the shows Hispanic radio actually plays"
-  description="Nationally syndicated Hispanic radio from HRN Media Networks. Hear Ana Maria Canseco, El Patrón, DJ Xtreme, Los 40 USA and Juan Arango — 345 affiliates, 95 markets, 95% of U.S. Hispanics."
+  description="Nationally syndicated Hispanic radio from HRN Media Networks. Hear Ana María Canseco, El Patrón, DJ Xtreme, Los 40 USA and Juan Arango — 345 affiliates, 95 markets, 95% of U.S. Hispanics."
 >
 
   <!-- ============================== HERO ============================== -->
@@ -32,35 +32,35 @@ const opportunity = [
     <div class="hero-bg" aria-hidden="true"></div>
     <div class="wrap hero-in">
       <div class="hero-copy">
-        <p class="eyebrow">HRN Media Networks</p>
+        <p class="hero-eyebrow">HRN Media Networks</p>
         <h1>These are the voices<br />Hispanic America<br /><span class="hl">turns on.</span></h1>
-        <p class="lede">
+        <p class="hero-lede">
           Five nationally syndicated shows, carried by 345 affiliate stations across 95 markets.
           Don't take our word for how they sound.
         </p>
         <div class="btn-row">
-          <a href="#talent" class="btn btn-primary">
+          <a href="#talent" class="btn btn-white">
             <svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
             Hear the shows
           </a>
-          <a href="#contact" class="btn btn-ghost">Request a plan</a>
+          <a href="#contact" class="btn btn-outline">Request a plan</a>
         </div>
       </div>
       <div class="hero-img">
-        <img src="/img/lineup.webp" width="2000" height="1167"
-             alt="HRN on-air talent: Ana Maria Canseco, El Patrón, DJ Xtreme, Sebas and Juan Arango" />
-      </div>
-    </div>
-
-    <div class="hero-strip">
-      <div class="wrap strip-in">
-        <div><span class="stat">345</span><span>affiliate stations</span></div>
-        <div><span class="stat">95</span><span>markets</span></div>
-        <div><span class="stat">95%</span><span>of U.S. Hispanics</span></div>
-        <div><span class="stat">#1</span><span>in 14 Hispanic DMAs</span></div>
+        <img src="/img/lineup.webp" width="2000" height="1167" fetchpriority="high"
+             alt="HRN on-air talent: Ana María Canseco, El Patrón, DJ Xtreme, Sebas and Juan Arango" />
       </div>
     </div>
   </header>
+
+  <div class="strip">
+    <div class="wrap strip-in">
+      <div><span class="stat">345</span><span>affiliate stations</span></div>
+      <div><span class="stat">95</span><span>markets</span></div>
+      <div><span class="stat">95%</span><span>of U.S. Hispanics</span></div>
+      <div><span class="stat">#1</span><span>in 14 Hispanic DMAs</span></div>
+    </div>
+  </div>
 
   <!-- ============================= TALENT ============================= -->
   <section id="talent">
@@ -75,12 +75,10 @@ const opportunity = [
 
     <div class="wrap talent-list">
       {talent.map((t, i) => (
-        <article class:list={['talent', { flip: i % 2 === 1 }]} style={`--accent:${t.accent}`}>
-          <div class="t-photo">
-            <div class="t-ring" aria-hidden="true"></div>
-            <img src={t.photo} alt={`${t.host}, host of ${t.show}`} loading="lazy"
-                 width="640" height="640" onerror="this.closest('.t-photo').classList.add('no-photo')" />
-            <span class="t-fallback" aria-hidden="true">{t.host.split(' ').map((n) => n[0]).join('')}</span>
+        <article class:list={['talent', { flip: i % 2 === 1 }]} style={`--c:${t.accent}`}>
+          <div class="t-art">
+            <img src={t.photo} alt={`${t.show} with ${t.host}`} loading="lazy" width="1000" height="1000" />
+            <span class="t-num">{String(t.order).padStart(2, '0')}</span>
           </div>
 
           <div class="t-body">
@@ -93,15 +91,21 @@ const opportunity = [
               <div><span class="k">Daypart</span><span class="v">{t.daypart}</span></div>
               <div><span class="k">Length</span><span class="v">{t.length}</span></div>
               <div><span class="k">Demo</span><span class="v">{t.demo}</span></div>
-              <div><span class="k">Formats</span><span class="v">{t.formats.join(', ')}</span></div>
+            </div>
+
+            <div class="t-formats">
+              {t.formats.map((f) => <span class="pill">{f}</span>)}
             </div>
 
             <DemoPlayer src={t.audio} label={`${t.show} with ${t.host}`} accent={t.accent} id={t.id} />
+            {t.audioAlt && (
+              <DemoPlayer src={t.audioAlt} label={`${t.show} — Regional Mexican`} accent={t.accent} id={`${t.id}-alt`} variant="Regional Mexican cut" />
+            )}
 
             <div class="t-stats">
               {t.stats.map((s) => (
                 <div>
-                  <span class:list={['sv', { needs: s.needs }]}>{s.needs ? '—' : s.value}</span>
+                  <span class="sv">{s.needs ? '—' : s.value}</span>
                   <span class="sl">{s.label}{s.needs && <span class="flag" style="margin-left:6px">Need</span>}</span>
                 </div>
               ))}
@@ -113,11 +117,11 @@ const opportunity = [
   </section>
 
   <!-- ============================ NETWORK ============================= -->
-  <section id="network" class="mist">
+  <section id="network" class="on-dark net">
     <div class="wrap center">
       <p class="eyebrow">The network</p>
       <h2>Stations choose to carry these shows.</h2>
-      <p class="lede" style="margin-top:16px">
+      <p class="lede" style="margin-top:18px">
         HRN represents nationally syndicated Hispanic programming. 345 stations signed on
         because the shows perform for their audience — and they can drop them the moment
         that stops. Affiliates are not bought. They opt in.
@@ -137,8 +141,8 @@ const opportunity = [
         <p class="eyebrow">What you can buy</p>
         <h2>Six ways in.</h2>
       </div>
-      <div class="grid g3" style="margin-top:52px">
-        {buy.map(([t, d]) => <div class="card"><h3>{t}</h3><p>{d}</p></div>)}
+      <div class="grid g3" style="margin-top:56px">
+        {buy.map(([t, d, c]) => <div class="card" style={`--c:${c}`}><h3>{t}</h3><p>{d}</p></div>)}
       </div>
     </div>
   </section>
@@ -148,15 +152,15 @@ const opportunity = [
     <div class="wrap">
       <div class="center">
         <p class="eyebrow">The opportunity</p>
-        <h2>The audience is growing. The spend isn't.</h2>
-        <p class="lede" style="margin-top:16px">
+        <h2>The audience is growing.<br />The spend isn't.</h2>
+        <p class="lede" style="margin-top:18px">
           Hispanic audiences are younger, larger and more brand-loyal than the general
           market — and still dramatically under-invested against.
         </p>
       </div>
       <div class="grid g4 opp">
-        {opportunity.map(([v, l, src]) => (
-          <div>
+        {opportunity.map(([v, l, src], i) => (
+          <div class="opp-c" style={`--c:${['var(--red)','var(--violet)','var(--green)','var(--amber)'][i]}`}>
             <div class="stat opp-v">{v}</div>
             <p class="opp-l">{l}</p>
             {src && <p class="opp-s">{src}</p>}
@@ -175,7 +179,7 @@ const opportunity = [
     <div class="wrap center">
       <p class="eyebrow">Let's talk</p>
       <h2>Tell us who you need to reach.</h2>
-      <p class="lede" style="margin-top:16px">
+      <p class="lede" style="margin-top:18px">
         We'll come back with the shows, the markets and the measurement — in writing.
       </p>
 
@@ -201,103 +205,118 @@ const opportunity = [
 
 <style>
   /* ---------------- hero ---------------- */
-  .hero{position:relative;overflow:hidden;padding-top:40px}
+  .hero{position:relative;overflow:hidden}
   .hero-bg{position:absolute;inset:0;z-index:0;
     background:
-      radial-gradient(1200px 700px at 72% 18%, rgba(0,167,226,.34), transparent 64%),
-      radial-gradient(900px 600px at 12% 88%, rgba(8,34,47,.9), transparent 70%),
-      linear-gradient(160deg,#04080B 0%,#07212E 52%,#04080B 100%);
+      radial-gradient(900px 620px at 84% 8%, rgba(255,255,255,.34), transparent 60%),
+      radial-gradient(760px 620px at 6% 96%, rgba(124,77,255,.55), transparent 66%),
+      linear-gradient(118deg,#00A7E2 0%,#1E7FE0 40%,#7C4DFF 76%,#C42BA6 100%);
   }
   .hero-bg:after{content:"";position:absolute;inset:0;
-    background:repeating-linear-gradient(90deg,rgba(255,255,255,.035) 0 2px,transparent 2px 14px)}
-  .hero-in{position:relative;z-index:1;display:grid;grid-template-columns:minmax(340px,.85fr) 1.25fr;
-           gap:10px;align-items:end;min-height:640px}
-  .hero-copy{padding:78px 0 96px}
-  .hero h1{margin-bottom:26px}
-  .hl{color:var(--cyan)}
+    background:repeating-linear-gradient(90deg,rgba(255,255,255,.07) 0 2px,transparent 2px 15px)}
+  .hero-in{position:relative;z-index:1;display:grid;
+           grid-template-columns:minmax(330px,.88fr) 1.22fr;gap:10px;align-items:end;min-height:600px}
+  .hero-copy{padding:76px 0 92px}
+  .hero-eyebrow{font-family:var(--head);font-size:.74rem;font-weight:700;letter-spacing:.2em;
+                text-transform:uppercase;color:rgba(255,255,255,.9);margin:0 0 16px}
+  .hero h1{color:#fff;margin-bottom:24px;text-shadow:0 2px 26px rgba(10,20,40,.22)}
+  .hl{color:#FFE45E}
+  .hero-lede{font-size:1.2rem;color:rgba(255,255,255,.94);max-width:46ch;margin:0}
   .hero-img{align-self:end;margin:0 -80px -1px 0;min-width:0}
-  .hero-img img{width:100%;max-width:none;filter:drop-shadow(0 30px 60px rgba(0,0,0,.6))}
+  .hero-img img{width:100%;max-width:none;filter:drop-shadow(0 28px 46px rgba(6,20,40,.42))}
   @media(min-width:1500px){.hero-img{margin-right:-140px}}
   @media(max-width:980px){
     .hero-in{grid-template-columns:1fr;min-height:0;gap:0}
-    .hero-copy{padding:44px 0 10px;text-align:center}
-    .hero .lede{margin-left:auto;margin-right:auto}
+    .hero-copy{padding:52px 0 12px;text-align:center}
+    .hero-lede{margin:0 auto}
     .hero .btn-row{justify-content:center}
     .hero-img{margin:0 -26px -1px}
   }
+  .btn-white{background:#fff;color:var(--ink);border-color:#fff;box-shadow:0 12px 30px -12px rgba(6,20,40,.5)}
+  .btn-white:hover{background:#FFE45E;border-color:#FFE45E}
+  .btn-outline{background:rgba(255,255,255,.12);color:#fff;border-color:rgba(255,255,255,.6)}
+  .btn-outline:hover{background:#fff;color:var(--ink);border-color:#fff}
 
-  .hero-strip{position:relative;z-index:1;border-top:1px solid var(--line-d);
-              background:rgba(4,8,11,.6);backdrop-filter:blur(8px)}
-  .strip-in{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;padding:26px 26px}
-  @media(max-width:700px){.strip-in{grid-template-columns:repeat(2,1fr);gap:22px}}
+  /* ---------------- stat strip ---------------- */
+  .strip{background:var(--ink);color:#fff}
+  .strip-in{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;padding:30px 26px}
+  @media(max-width:700px){.strip-in{grid-template-columns:repeat(2,1fr);gap:24px}}
   .strip-in div{display:flex;flex-direction:column;gap:4px}
-  .strip-in .stat{font-size:2rem;color:var(--cyan)}
-  .strip-in span:last-child{font-size:.84rem;color:#8FA0AD}
+  .strip-in .stat{font-size:2.15rem;color:var(--cyan-br)}
+  .strip-in span:last-child{font-size:.84rem;color:#93A6B2}
 
   /* ---------------- talent ---------------- */
-  .talent-list{display:flex;flex-direction:column;gap:30px;margin-top:64px}
-  .talent{display:grid;grid-template-columns:300px 1fr;gap:42px;align-items:center;
-          background:var(--ink-2);border:1px solid var(--line-d);border-radius:16px;
-          padding:34px 38px;position:relative;overflow:hidden}
-  .talent:before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--accent)}
-  .talent.flip{grid-template-columns:1fr 300px}
-  .talent.flip .t-photo{order:2}
-  @media(max-width:860px){
-    .talent,.talent.flip{grid-template-columns:1fr;gap:26px;padding:30px 24px}
-    .talent.flip .t-photo{order:0}
+  .talent-list{display:flex;flex-direction:column;gap:34px;margin-top:64px}
+  .talent{display:grid;grid-template-columns:330px 1fr;gap:44px;align-items:center;
+          background:var(--cloud);border:1px solid var(--line);border-radius:20px;
+          padding:34px;position:relative;overflow:hidden;
+          box-shadow:0 2px 0 0 var(--c) inset, 0 1px 3px rgba(14,26,32,.04)}
+  .talent:before{content:"";position:absolute;left:0;right:0;top:0;height:6px;background:var(--c)}
+  .talent.flip{grid-template-columns:1fr 330px}
+  .talent.flip .t-art{order:2}
+  @media(max-width:880px){
+    .talent,.talent.flip{grid-template-columns:1fr;gap:26px;padding:28px 22px}
+    .talent.flip .t-art{order:0}
   }
 
-  .t-photo{position:relative;width:260px;height:260px;justify-self:center;display:grid;place-items:center}
-  .t-ring{position:absolute;inset:0;border-radius:50%;
-          background:radial-gradient(circle at 50% 35%, color-mix(in srgb, var(--accent) 42%, transparent), transparent 68%);
-          border:2px solid color-mix(in srgb, var(--accent) 45%, transparent)}
-  .t-photo img{width:232px;height:232px;border-radius:50%;object-fit:cover;object-position:top center;
-               position:relative;z-index:1}
-  .t-fallback{display:none;position:relative;z-index:1;font-family:var(--head);font-weight:700;
-              font-size:3.4rem;color:var(--accent);letter-spacing:-.02em}
-  .t-photo.no-photo img{display:none}
-  .t-photo.no-photo .t-fallback{display:block}
+  .t-art{position:relative;border-radius:14px;overflow:hidden;
+         box-shadow:0 18px 40px -18px color-mix(in srgb, var(--c) 60%, transparent)}
+  .t-art img{width:100%;aspect-ratio:1;object-fit:cover}
+  .t-num{position:absolute;top:12px;left:14px;font-family:var(--head);font-weight:700;
+         font-size:.78rem;letter-spacing:.1em;color:#fff;background:var(--c);
+         padding:5px 11px;border-radius:999px}
 
-  .t-kicker{font-family:var(--head);font-size:.72rem;font-weight:600;letter-spacing:.15em;
-            text-transform:uppercase;color:var(--accent);margin:0 0 10px}
-  .t-show{font-size:clamp(1.5rem,2.8vw,2.1rem);font-weight:700;letter-spacing:-.02em;margin-bottom:3px}
-  .t-host{font-family:var(--head);font-size:1rem;color:#9FB0BC;margin:0 0 16px}
-  .t-pitch{font-size:1.02rem;color:#B6C4CE;margin-bottom:22px;max-width:60ch}
+  .t-kicker{font-family:var(--head);font-size:.73rem;font-weight:700;letter-spacing:.14em;
+            text-transform:uppercase;color:var(--c);margin:0 0 10px}
+  .t-show{font-size:clamp(1.6rem,3vw,2.3rem);font-weight:700;letter-spacing:-.024em;margin-bottom:3px}
+  .t-host{font-family:var(--head);font-size:1.02rem;color:var(--slate);margin:0 0 16px}
+  .t-pitch{font-size:1.02rem;color:var(--ink-soft);margin-bottom:22px;max-width:58ch}
 
-  .t-meta{display:grid;grid-template-columns:repeat(4,auto);gap:22px;margin-bottom:22px;
-          justify-content:start}
+  .t-meta{display:grid;grid-template-columns:repeat(3,auto);gap:26px;margin-bottom:16px;justify-content:start}
   @media(max-width:700px){.t-meta{grid-template-columns:repeat(2,1fr);gap:16px}}
-  .t-meta .k{display:block;font-family:var(--head);font-size:.66rem;font-weight:600;
-             letter-spacing:.14em;text-transform:uppercase;color:#6F7D89;margin-bottom:3px}
-  .t-meta .v{font-size:.9rem;color:#D3DDE4}
+  .t-meta .k{display:block;font-family:var(--head);font-size:.65rem;font-weight:700;
+             letter-spacing:.14em;text-transform:uppercase;color:var(--slate-lt);margin-bottom:3px}
+  .t-meta .v{font-size:.92rem;color:var(--ink);font-weight:600;font-family:var(--head)}
+
+  .t-formats{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:22px}
+  .pill{font-family:var(--head);font-size:.74rem;font-weight:600;padding:5px 13px;border-radius:999px;
+        background:color-mix(in srgb, var(--c) 12%, #fff);color:color-mix(in srgb, var(--c) 78%, #000);
+        border:1px solid color-mix(in srgb, var(--c) 26%, #fff)}
 
   .t-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:22px;
-           padding-top:22px;border-top:1px solid var(--line-d)}
+           padding-top:22px;border-top:1px solid var(--line)}
   @media(max-width:700px){.t-stats{grid-template-columns:repeat(2,1fr)}}
-  .t-stats .sv{display:block;font-family:var(--head);font-weight:700;font-size:1.4rem;
-               color:var(--accent);line-height:1.1}
-  .t-stats .sv.needs{color:#E8A33D;opacity:.7}
-  .t-stats .sl{font-size:.78rem;color:#8FA0AD;line-height:1.4;display:block;margin-top:4px}
+  .t-stats .sv{display:block;font-family:var(--head);font-weight:700;font-size:1.45rem;
+               color:var(--c);line-height:1.1}
+  .t-stats .sl{font-size:.77rem;color:var(--slate);line-height:1.4;display:block;margin-top:4px}
+
+  /* ---------------- network ---------------- */
+  .net{background:linear-gradient(140deg,#0E1A20 0%,#123243 58%,#0E1A20 100%)}
 
   /* ---------------- opportunity ---------------- */
   .opp{margin-top:52px}
-  .opp-v{font-size:2.6rem;color:var(--cyan-dk)}
+  .opp-c{background:#fff;border-radius:14px;padding:28px 24px;border-top:4px solid var(--c)}
+  .opp-v{font-size:2.7rem;color:var(--c)}
   .opp-l{font-size:.95rem;color:var(--slate);margin:10px 0 0}
-  .opp-s{font-size:.75rem;color:var(--slate-lt);margin:6px 0 0}
+  .opp-s{font-size:.74rem;color:var(--slate-lt);margin:6px 0 0}
 
   /* ---------------- contact ---------------- */
-  .cta{background:linear-gradient(165deg,#04080B 0%,#07212E 60%,#04080B 100%)}
+  .cta{background:linear-gradient(118deg,#00A7E2 0%,#1E7FE0 42%,#7C4DFF 100%)}
+  .cta h2,.cta .eyebrow{color:#fff}
+  .cta .eyebrow{color:rgba(255,255,255,.88)}
+  .cta .lede{color:rgba(255,255,255,.93)}
   .f{max-width:560px;margin:38px auto 0;display:grid;gap:14px}
   .f-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
   @media(max-width:560px){.f-row{grid-template-columns:1fr}}
   .f input,.f textarea{font-family:var(--body);font-size:1rem;padding:15px 17px;
-    border:1px solid rgba(255,255,255,.16);border-radius:8px;background:rgba(255,255,255,.05);
+    border:2px solid rgba(255,255,255,.3);border-radius:10px;background:rgba(255,255,255,.14);
     color:#fff;width:100%}
-  .f input::placeholder,.f textarea::placeholder{color:#7E8C98}
-  .f input:focus,.f textarea:focus{outline:none;border-color:var(--cyan);
-    box-shadow:0 0 0 3px rgba(0,167,226,.2)}
+  .f input::placeholder,.f textarea::placeholder{color:rgba(255,255,255,.72)}
+  .f input:focus,.f textarea:focus{outline:none;border-color:#fff;background:rgba(255,255,255,.22)}
   .f textarea{min-height:120px;resize:vertical}
-  .f button{justify-self:center;margin-top:6px}
+  .f button{justify-self:center;margin-top:6px;background:#fff;color:var(--ink);border-color:#fff}
+  .f button:hover{background:#FFE45E;border-color:#FFE45E}
   .hp{position:absolute;left:-9999px}
-  .cta .src a{color:var(--cyan);text-decoration:none}
+  .cta .src{color:rgba(255,255,255,.85)}
+  .cta .src a{color:#fff;font-weight:700}
 </style>

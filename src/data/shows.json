@@ -6,20 +6,41 @@
     "order": 1,
     "tagline": "Music, entertainment and lifestyle for today's Latino audience.",
     "pitch": "An Emmy Award-winning daytime television host who brought her audience with her. Échate Pa'Cá is the show listeners plan their morning around — warm, funny, and trusted in a way no ad unit can manufacture.",
-    "formats": ["Adult Hits", "Hot AC", "Regional Mexican"],
+    "formats": [
+      "Adult Hits",
+      "Hot AC",
+      "Regional Mexican"
+    ],
     "length": "1-hour daily + 2-hour weekend",
     "daypart": "Middays",
     "demo": "A 25–54",
     "credential": "Emmy Award-winning host · 89% U.S. coverage",
-    "accent": "#00A7E2",
+    "accent": "#E1343F",
     "audio": "/audio/echate-pa-ca.mp3",
-    "photo": "/img/talent/ana-maria-canseco.webp",
+    "photo": "/img/talent/ana-maria-canseco.jpg",
     "stats": [
-      { "value": "89%", "label": "U.S. coverage" },
-      { "value": "", "label": "stations", "needs": true },
-      { "value": "", "label": "markets", "needs": true },
-      { "value": "", "label": "social followers", "needs": true }
-    ]
+      {
+        "value": "89%",
+        "label": "U.S. coverage"
+      },
+      {
+        "value": "",
+        "label": "stations",
+        "needs": true
+      },
+      {
+        "value": "",
+        "label": "markets",
+        "needs": true
+      },
+      {
+        "value": "",
+        "label": "social followers",
+        "needs": true
+      }
+    ],
+    "hasDemo": true,
+    "audioAlt": "/audio/echate-pa-ca-regmex.mp3"
   },
   {
     "id": "buenas-tardes-el-patron",
@@ -28,20 +49,38 @@
     "order": 2,
     "tagline": "The best mix of content, energy, information and signature fun.",
     "pitch": "Four hours of afternoon drive with a host who treats the microphone like a conversation. El Patrón is the longest daily block on the network and the one advertisers use when they need frequency with personality attached.",
-    "formats": ["Entertainment"],
+    "formats": [
+      "Entertainment"
+    ],
     "length": "4-hour weekday",
     "daypart": "Afternoon drive",
     "demo": "A 18–34 / 25–54",
     "credential": "Longest daily block on the network",
-    "accent": "#4FC3EE",
+    "accent": "#F5A623",
     "audio": "/audio/buenas-tardes-el-patron.mp3",
-    "photo": "/img/talent/el-patron.webp",
+    "photo": "/img/talent/el-patron.jpg",
     "stats": [
-      { "value": "4 hrs", "label": "weekday block" },
-      { "value": "", "label": "stations", "needs": true },
-      { "value": "", "label": "markets", "needs": true },
-      { "value": "", "label": "social followers", "needs": true }
-    ]
+      {
+        "value": "4 hrs",
+        "label": "weekday block"
+      },
+      {
+        "value": "",
+        "label": "stations",
+        "needs": true
+      },
+      {
+        "value": "",
+        "label": "markets",
+        "needs": true
+      },
+      {
+        "value": "",
+        "label": "social followers",
+        "needs": true
+      }
+    ],
+    "hasDemo": false
   },
   {
     "id": "la-mezcla-fuego",
@@ -50,20 +89,39 @@
     "order": 3,
     "tagline": "High-energy mix show with Latin urban hits and exclusive interviews.",
     "pitch": "The #1 Latin mix show in Miami, now syndicated nationwide. DJ Xtreme breaks records before they chart, which is why the show reaches an audience that does not think of itself as a radio audience.",
-    "formats": ["Spanish Contemporary", "Tropical"],
+    "formats": [
+      "Spanish Contemporary",
+      "Tropical"
+    ],
     "length": "1-hour weekday + 2-hour weekend",
     "daypart": "Evenings / weekend",
     "demo": "A 18–34",
     "credential": "#1 Latin mix show in Miami",
-    "accent": "#9BDDF6",
+    "accent": "#C42BA6",
     "audio": "/audio/la-mezcla-fuego.mp3",
-    "photo": "/img/talent/dj-xtreme.webp",
+    "photo": "/img/talent/dj-xtreme.jpg",
     "stats": [
-      { "value": "#1", "label": "Latin mix show, Miami" },
-      { "value": "", "label": "stations", "needs": true },
-      { "value": "", "label": "markets", "needs": true },
-      { "value": "", "label": "social followers", "needs": true }
-    ]
+      {
+        "value": "#1",
+        "label": "Latin mix show, Miami"
+      },
+      {
+        "value": "",
+        "label": "stations",
+        "needs": true
+      },
+      {
+        "value": "",
+        "label": "markets",
+        "needs": true
+      },
+      {
+        "value": "",
+        "label": "social followers",
+        "needs": true
+      }
+    ],
+    "hasDemo": true
   },
   {
     "id": "los-40-usa",
@@ -72,20 +130,40 @@
     "order": 4,
     "tagline": "The world's top Hispanic music brand — Latin pop, reggaeton and trap.",
     "pitch": "Los 40 is the biggest music brand in the Spanish-speaking world, and Sebas is its U.S. voice — a curator of global Hispanic pop culture rather than a announcer reading a chart.",
-    "formats": ["Spanish Hits", "Urban", "Regional Mexican"],
+    "formats": [
+      "Spanish Hits",
+      "Urban",
+      "Regional Mexican"
+    ],
     "length": "2-hour weekly show",
     "daypart": "Weekend",
     "demo": "A 18–49",
     "credential": "The world's #1 Hispanic music brand",
-    "accent": "#00A7E2",
+    "accent": "#7C4DFF",
     "audio": "/audio/los-40-usa.mp3",
-    "photo": "/img/talent/sebas.webp",
+    "photo": "/img/talent/sebas.jpg",
     "stats": [
-      { "value": "Global", "label": "music brand" },
-      { "value": "", "label": "stations", "needs": true },
-      { "value": "", "label": "markets", "needs": true },
-      { "value": "", "label": "social followers", "needs": true }
-    ]
+      {
+        "value": "Global",
+        "label": "music brand"
+      },
+      {
+        "value": "",
+        "label": "stations",
+        "needs": true
+      },
+      {
+        "value": "",
+        "label": "markets",
+        "needs": true
+      },
+      {
+        "value": "",
+        "label": "social followers",
+        "needs": true
+      }
+    ],
+    "hasDemo": true
   },
   {
     "id": "minuto-deportivo",
@@ -94,19 +172,37 @@
     "order": 5,
     "tagline": "The fastest minute in sports.",
     "pitch": "Sixty seconds, every weekday. Minuto Deportivo is the highest-frequency unit on the network — a sponsor owns a moment listeners come back for daily rather than a spot they sit through.",
-    "formats": ["Sports"],
+    "formats": [
+      "Sports"
+    ],
     "length": "60-second weekday vignettes",
     "daypart": "Multiple dayparts",
     "demo": "HA 25–54",
     "credential": "Highest-frequency placement on the network",
-    "accent": "#4FC3EE",
+    "accent": "#00B86B",
     "audio": "/audio/minuto-deportivo.mp3",
-    "photo": "/img/talent/juan-arango.webp",
+    "photo": "/img/talent/juan-arango.jpg",
     "stats": [
-      { "value": ":60", "label": "daily vignette" },
-      { "value": "", "label": "stations", "needs": true },
-      { "value": "", "label": "markets", "needs": true },
-      { "value": "", "label": "social followers", "needs": true }
-    ]
+      {
+        "value": ":60",
+        "label": "daily vignette"
+      },
+      {
+        "value": "",
+        "label": "stations",
+        "needs": true
+      },
+      {
+        "value": "",
+        "label": "markets",
+        "needs": true
+      },
+      {
+        "value": "",
+        "label": "social followers",
+        "needs": true
+      }
+    ],
+    "hasDemo": true
   }
 ]
