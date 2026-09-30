@@ -74,8 +74,15 @@ const opportunity = [
     <div class="wrap t-grid">
       {talent.map((t) => (
         <article class="tc" style={`--c:${t.accent}`}>
-          <div class="tc-art">
-            <img src={t.photo} alt={`${t.show} with ${t.host}`} loading="lazy" width="1000" height="1000" />
+          <div class:list={['tc-art', { branded: !!t.cutout }]}>
+            {t.cutout ? (
+              <>
+                <img class="tc-cut" src={t.cutout} alt={t.host} loading="lazy" />
+                {t.logo && <img class="tc-logo" src={t.logo} alt={`${t.show} logo`} loading="lazy" />}
+              </>
+            ) : (
+              <img src={t.photo} alt={`${t.show} with ${t.host}`} loading="lazy" width="1000" height="1000" />
+            )}
             <DemoPlayer src={t.audio} label={`${t.show} with ${t.host}`} accent={t.accent} compact unavailable={!t.hasDemo} />
           </div>
 
@@ -253,7 +260,20 @@ const opportunity = [
       box-shadow:0 1px 3px rgba(14,26,32,.05)}
   .tc:hover{transform:translateY(-5px);box-shadow:0 26px 50px -24px color-mix(in srgb,var(--c) 55%,transparent)}
   .tc-art{position:relative;background:#0E1A20}
-  .tc-art img{width:100%;aspect-ratio:1;object-fit:cover}
+  .tc-art > img{width:100%;aspect-ratio:1;object-fit:cover}
+
+  /* branded panel: transparent cutout + show logo on the show's own colour */
+  .tc-art.branded{aspect-ratio:1;overflow:hidden;
+    background:
+      radial-gradient(120% 90% at 78% 8%, color-mix(in srgb, var(--c) 32%, #fff) 0%, transparent 62%),
+      linear-gradient(158deg, color-mix(in srgb, var(--c) 92%, #fff) 0%, var(--c) 55%, color-mix(in srgb, var(--c) 72%, #000) 100%);
+  }
+  .tc-art.branded .tc-cut{position:absolute;bottom:0;right:-6%;height:96%;width:auto;
+    aspect-ratio:auto;object-fit:contain;object-position:bottom center;
+    filter:drop-shadow(0 12px 22px rgba(0,0,0,.3))}
+  .tc-art.branded .tc-logo{position:absolute;top:7%;left:6%;width:46%;height:auto;
+    aspect-ratio:auto;object-fit:contain;z-index:1;
+    filter:drop-shadow(0 4px 10px rgba(0,0,0,.22))}
   .tc-body{padding:22px 22px 24px;display:flex;flex-direction:column;flex:1}
 
   .tc-kicker{font-family:var(--head);font-size:.66rem;font-weight:700;letter-spacing:.13em;

@@ -15,7 +15,7 @@
     "daypart": "Middays",
     "demo": "A 25–54",
     "credential": "Emmy Award-winning host · 89% U.S. coverage",
-    "accent": "#E1343F",
+    "accent": "#F66B03",
     "audio": "/audio/echate-pa-ca.mp3",
     "photo": "/img/talent/ana-maria-canseco.jpg",
     "stats": [
@@ -74,7 +74,14 @@
         "url": "",
         "followers": ""
       }
-    ]
+    ],
+    "logo": "/img/logos/echate-pa-ca.png",
+    "cutout": "/img/cutouts/ana-maria-1.webp",
+    "brand": {
+      "teal": "#00A0BE",
+      "orange": "#F66B03",
+      "magenta": "#DD267C"
+    }
   },
   {
     "id": "buenas-tardes-el-patron",
@@ -90,7 +97,7 @@
     "daypart": "Afternoon drive",
     "demo": "A 18–34 / 25–54",
     "credential": "Longest daily block on the network",
-    "accent": "#F5A623",
+    "accent": "#E1343F",
     "audio": "/audio/buenas-tardes-el-patron.mp3",
     "photo": "/img/talent/el-patron.jpg",
     "stats": [
@@ -148,7 +155,9 @@
         "url": "",
         "followers": ""
       }
-    ]
+    ],
+    "logo": "",
+    "cutout": ""
   },
   {
     "id": "la-mezcla-fuego",
@@ -223,7 +232,9 @@
         "url": "https://www.youtube.com/user/djxincharge",
         "followers": ""
       }
-    ]
+    ],
+    "logo": "",
+    "cutout": ""
   },
   {
     "id": "los-40-usa",
@@ -299,7 +310,9 @@
         "url": "",
         "followers": ""
       }
-    ]
+    ],
+    "logo": "",
+    "cutout": ""
   },
   {
     "id": "minuto-deportivo",
@@ -373,6 +386,8 @@
         "url": "",
         "followers": ""
       }
-    ]
+    ],
+    "logo": "",
+    "cutout": ""
   }
 ]
