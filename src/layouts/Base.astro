@@ -76,14 +76,17 @@ const nav = [
          transition:background .28s ease, border-color .28s ease, backdrop-filter .28s ease}
     .nav.scrolled{background:rgba(4,8,11,.92);backdrop-filter:blur(14px);
                   border-bottom-color:var(--line-d)}
-    .nav-in{display:flex;align-items:center;justify-content:space-between;height:var(--nav-h);gap:22px}
+    .nav-in{display:flex;align-items:center;justify-content:space-between;
+            height:var(--nav-h);gap:22px;transition:height .28s ease}
+    .nav.scrolled .nav-in{height:66px}
     .logo{display:flex;align-items:center;text-decoration:none;flex:0 0 auto}
-    .logo img{height:36px;width:auto;display:block}
-    @media(max-width:520px){.logo img{height:28px}}
+    .logo img{height:50px;width:auto;display:block;transition:height .28s ease}
+    .nav.scrolled .logo img{height:36px}
+    @media(max-width:520px){.logo img{height:34px}.nav.scrolled .logo img{height:28px}}
     .links{display:flex;align-items:center;gap:4px}
-    .links a{font-family:var(--head);font-size:.87rem;font-weight:500;color:#BCC8D2;
+    .links a{font-family:var(--head);font-size:.92rem;font-weight:600;color:#fff;
              text-decoration:none;padding:9px 14px;border-radius:6px;transition:color .16s,background .16s}
-    .links a:hover{color:#fff;background:rgba(255,255,255,.07)}
+    .links a:hover{color:#fff;background:rgba(255,255,255,.14)}
     .nav-cta{margin-left:10px;padding:11px 22px!important;color:var(--ink)!important}
     .nav-cta:hover{color:var(--ink)!important}
 

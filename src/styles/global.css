@@ -8,6 +8,7 @@
   /* brand anchor */
   --cyan:#00A7E2;
   --cyan-dk:#0B7FAB;      /* cyan as TEXT on white — 4.6:1 */
+  --pretitle:#17A6DF;     /* section eyebrows, per brand */
   --cyan-br:#4FC3EE;
   --cyan-wash:#E8F7FD;
 
@@ -67,8 +68,8 @@ section{padding:96px 0;position:relative}
 .center .lede{margin-left:auto;margin-right:auto}
 
 .eyebrow{
-  font-family:var(--head);font-size:.74rem;font-weight:700;letter-spacing:.2em;
-  text-transform:uppercase;color:var(--cyan-dk);margin-bottom:16px;
+  font-family:var(--head);font-size:1.02rem;font-weight:700;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--pretitle);margin-bottom:16px;
 }
 .lede{font-size:1.2rem;color:var(--slate);max-width:62ch}
 .src{font-size:.8rem;color:var(--slate-lt);line-height:1.6;margin-top:28px}
@@ -79,7 +80,7 @@ section{padding:96px 0;position:relative}
 .on-dark{background:var(--ink);color:#C8D6DE}
 .on-dark h2,.on-dark h3,.on-dark h4{color:#fff}
 .on-dark .lede{color:#9EB2BE}
-.on-dark .eyebrow{color:var(--cyan-br)}
+.on-dark .eyebrow{color:var(--pretitle)}
 
 /* ---------- buttons ---------- */
 .btn{

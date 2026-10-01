@@ -15,7 +15,7 @@
     "daypart": "Middays",
     "demo": "A 25–54",
     "credential": "Emmy Award-winning host · 89% U.S. coverage",
-    "accent": "#FC7A1C",
+    "accent": "#F96C03",
     "audio": "/audio/echate-pa-ca-regmex.mp3",
     "photo": "/img/talent/echate-pa-ca.jpg",
     "stats": [
@@ -88,7 +88,8 @@
       "magenta": "#DD267C"
     },
     "panel": "#FC7A1C",
-    "accentText": "#C45403"
+    "accentText": "#C25402",
+    "playInk": "#0E1A20"
   },
   {
     "id": "buenas-tardes-el-patron",
@@ -171,7 +172,8 @@
     "logo": "",
     "cutout": "",
     "accentText": "#ED040C",
-    "panel": "#FC373E"
+    "panel": "#FC373E",
+    "playInk": "#FFFFFF"
   },
   {
     "id": "la-mezcla-fuego",
@@ -188,7 +190,7 @@
     "daypart": "Evenings / weekend",
     "demo": "A 18–34",
     "credential": "#1 Latin mix show in Miami",
-    "accent": "#5F34CA",
+    "accent": "#5340EA",
     "audio": "/audio/la-mezcla-fuego.mp3",
     "photo": "/img/talent/la-mezcla-fuego.jpg",
     "stats": [
@@ -254,8 +256,9 @@
     ],
     "logo": "",
     "cutout": "",
-    "accentText": "#5F34CA",
-    "panel": "#5F34CA"
+    "accentText": "#5340EA",
+    "panel": "#5F34CA",
+    "playInk": "#FFFFFF"
   },
   {
     "id": "los-40-usa",
@@ -273,7 +276,7 @@
     "daypart": "Weekend",
     "demo": "A 18–49",
     "credential": "The world's #1 Hispanic music brand",
-    "accent": "#ABF059",
+    "accent": "#56C83C",
     "audio": "/audio/los-40-usa.mp3",
     "photo": "/img/talent/los-40-usa.jpg",
     "stats": [
@@ -339,8 +342,9 @@
     ],
     "logo": "",
     "cutout": "",
-    "accentText": "#4B810C",
-    "panel": "#ABF059"
+    "accentText": "#388726",
+    "panel": "#ABF059",
+    "playInk": "#0E1A20"
   },
   {
     "id": "minuto-deportivo",
@@ -356,7 +360,7 @@
     "daypart": "Multiple dayparts",
     "demo": "HA 25–54",
     "credential": "23 years on air · TUDN match commentator",
-    "accent": "#011665",
+    "accent": "#0148D4",
     "audio": "/audio/minuto-deportivo.mp3",
     "photo": "/img/talent/minuto-deportivo.jpg",
     "stats": [
@@ -422,7 +426,8 @@
     ],
     "logo": "",
     "cutout": "",
-    "accentText": "#011665",
-    "panel": "#011665"
+    "accentText": "#0148D4",
+    "panel": "#011665",
+    "playInk": "#FFFFFF"
   }
 ]

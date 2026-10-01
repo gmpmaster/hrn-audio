@@ -42,7 +42,7 @@ const opportunity = [
       <h1>These are the voices<br />Hispanic America <span class="hl">turns on.</span></h1>
       <p class="hero-lede">
         The hosts they wake up to, drive home with, and turn up.
-        Don't take our word for how they sound.
+        Don't take our word for how they sound…
       </p>
       <div class="btn-row">
         <a href="#talent" class="btn btn-white">
@@ -72,7 +72,7 @@ const opportunity = [
 
     <div class="wrap t-grid">
       {talent.map((t) => (
-        <article class="tc" style={`--c:${t.accent};--ct:${t.accentText ?? t.accent};--c2:${t.accent2 ?? t.accent};--panel:${t.panel ?? t.accent}`}>
+        <article class="tc" style={`--c:${t.accent};--ct:${t.accentText ?? t.accent};--play-ink:${t.playInk ?? "#fff"}`}>
           <div class:list={['tc-art', { branded: !!t.cutout }]}>
             {t.cutout ? (
               <>
@@ -118,11 +118,17 @@ const opportunity = [
       <!-- the sixth cell: everything not featured here -->
       <a class="tc tc-more" href="/shows">
         <span class="more-i" aria-hidden="true">
-          <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M4 12h15M13 5l7 7-7 7" stroke="currentColor"
+            stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
         </span>
-        <h3>And there's more where they came from.</h3>
-        <p>Tejano Nation, Minuto 60, La Mezcla and the full 24/7 format lineup — with demos.</p>
-        <span class="more-cta">See all programming →</span>
+        <h3>There's a whole lineup behind these five.</h3>
+        <p>Tejano Nation, Minuto 60, the 24/7 formats and every other show on the
+           network — each with a demo you can play.</p>
+        <span class="more-cta">Hear the rest
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 5l7 7-7 7"
+            stroke="currentColor" stroke-width="2.6" stroke-linecap="round"
+            stroke-linejoin="round" fill="none"/></svg>
+        </span>
       </a>
     </div>
   </section>
@@ -285,41 +291,46 @@ const opportunity = [
   .tc-art.branded .tc-logo{position:absolute;top:7%;left:6%;width:46%;height:auto;
     aspect-ratio:auto;object-fit:contain;z-index:1;
     filter:drop-shadow(0 4px 10px rgba(0,0,0,.22))}
-  .tc-body{padding:26px 26px 28px;display:flex;flex-direction:column;flex:1}
+  .tc-body{padding:30px 30px 32px;display:flex;flex-direction:column;flex:1}
 
-  .tc-kicker{font-family:var(--head);font-size:.66rem;font-weight:700;letter-spacing:.13em;
-             text-transform:uppercase;color:var(--ct);margin:0 0 8px;min-height:2.1em;line-height:1.4}
-  .tc-show{font-size:1.55rem;font-weight:700;letter-spacing:-.022em;margin-bottom:3px;line-height:1.18}
-  .tc-host{font-family:var(--head);font-size:.95rem;color:var(--slate);margin:0 0 12px}
-  .tc-pitch{font-size:.95rem;color:var(--ink-soft);margin:0 0 18px;line-height:1.6}
+  .tc-kicker{font-family:var(--head);font-size:.88rem;font-weight:700;letter-spacing:.015em;
+             text-transform:uppercase;color:var(--ct);margin:0 0 10px;min-height:2.4em;line-height:1.35}
+  .tc-show{font-size:1.85rem;font-weight:700;letter-spacing:-.024em;margin-bottom:4px;line-height:1.14}
+  .tc-host{font-family:var(--head);font-size:1.08rem;font-weight:500;color:var(--slate);margin:0 0 14px}
+  .tc-pitch{font-size:1.05rem;color:var(--ink-soft);margin:0 0 20px;line-height:1.6}
 
   .tc-stats{display:grid;grid-template-columns:1fr 1fr;gap:14px;padding:16px 0;
             border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-bottom:14px}
-  .tc-stats .sv{display:block;font-family:var(--head);font-weight:700;font-size:1.3rem;
+  .tc-stats .sv{display:block;font-family:var(--head);font-weight:700;font-size:1.6rem;
                 color:var(--ct);line-height:1.1}
-  .tc-stats .sl{font-size:.72rem;color:var(--slate);line-height:1.35;display:block;margin-top:3px}
+  .tc-stats .sl{font-size:.84rem;color:var(--slate);line-height:1.35;display:block;margin-top:5px}
   .tc-stats .flag{margin-left:5px}
 
   .tc-social{display:flex;gap:7px;margin-top:auto;flex-wrap:wrap}
-  .soc{display:inline-flex;align-items:center;gap:5px;background:var(--mist);border-radius:999px;
-       padding:5px 11px 5px 8px;color:var(--slate);text-decoration:none;transition:background .16s,color .16s}
+  .soc{display:inline-flex;align-items:center;gap:6px;background:var(--mist);border-radius:999px;
+       padding:7px 13px 7px 10px;color:var(--slate);text-decoration:none;transition:background .16s,color .16s}
   a.soc:hover{background:var(--c);color:#fff}
   .soc.off{opacity:.45;pointer-events:none}
-  .soc svg{width:15px;height:15px;fill:currentColor;flex:0 0 15px}
-  .soc em{font-style:normal;font-family:var(--head);font-size:.72rem;font-weight:600;
+  .soc svg{width:17px;height:17px;fill:currentColor;flex:0 0 17px}
+  .soc em{font-style:normal;font-family:var(--head);font-size:.82rem;font-weight:600;
           font-variant-numeric:tabular-nums}
 
   /* the sixth cell */
   .tc-more{text-decoration:none;justify-content:center;align-items:flex-start;
-           padding:32px 28px;background:linear-gradient(150deg,#0E1A20,#123243);
-           border-color:transparent;color:#C8D6DE;gap:0}
-  .tc-more:hover{transform:translateY(-5px);box-shadow:0 26px 50px -24px rgba(0,167,226,.55)}
-  .more-i{width:46px;height:46px;border-radius:50%;background:var(--cyan);color:#fff;
-          display:grid;place-items:center;margin-bottom:20px}
-  .more-i svg{width:22px;height:22px;fill:none}
-  .tc-more h3{color:#fff;font-size:1.3rem;letter-spacing:-.02em;margin-bottom:10px;line-height:1.24}
-  .tc-more p{font-size:.92rem;color:#93A6B2;margin:0 0 18px}
-  .more-cta{font-family:var(--head);font-weight:700;font-size:.87rem;color:var(--cyan-br)}
+           padding:36px 32px;background:#fff;border:1px solid var(--line);color:var(--slate);gap:0}
+  .tc-more:hover{transform:translateY(-5px);border-color:var(--pretitle);
+                 box-shadow:0 26px 50px -24px rgba(23,166,223,.5)}
+  .more-i{width:62px;height:62px;border-radius:50%;background:var(--pretitle);color:#fff;
+          display:grid;place-items:center;margin-bottom:24px;
+          box-shadow:0 10px 26px -10px rgba(23,166,223,.8);transition:transform .25s ease}
+  .more-i svg{width:30px;height:30px}
+  .tc-more:hover .more-i{transform:translateX(6px)}
+  .tc-more h3{color:var(--ink);font-size:1.85rem;letter-spacing:-.024em;margin-bottom:12px;line-height:1.14}
+  .tc-more p{font-size:1.05rem;color:var(--slate);margin:0 0 22px;line-height:1.6}
+  .more-cta{display:inline-flex;align-items:center;gap:8px;font-family:var(--head);
+            font-weight:700;font-size:1.05rem;color:var(--pretitle)}
+  .more-cta svg{width:20px;height:20px;transition:transform .25s ease}
+  .tc-more:hover .more-cta svg{transform:translateX(5px)}
 
   /* ---------------- network ---------------- */
   .net{background:linear-gradient(140deg,#0E1A20 0%,#123243 58%,#0E1A20 100%)}
