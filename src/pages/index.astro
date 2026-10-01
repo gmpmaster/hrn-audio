@@ -39,7 +39,7 @@ const opportunity = [
   <header class="hero">
     <div class="hero-bg" aria-hidden="true"></div>
     <div class="wrap hero-copy">
-      <h1>These are the voices<br />Hispanic America <span class="hl">turns on.</span></h1>
+      <h1><span class="l1">These are the voices</span><br /><span class="l2">Hispanic America</span> <span class="hl">turns on.</span></h1>
       <p class="hero-lede">
         The hosts they wake up to, drive home with, and turn up.
         Don't take our word for how they sound…
@@ -261,6 +261,44 @@ const opportunity = [
   .follow{margin:26px 0 0;font-family:var(--head);font-size:1.02rem;color:var(--slate)}
   .follow strong{font-size:1.5rem;font-weight:700;color:var(--cyan-dk);
                  font-variant-numeric:tabular-nums}
+
+
+  /* ---------------- hero entrance ----------------
+     Staged rise. Transform/opacity only, so nothing reflows and the
+     above-the-fold measurements hold. */
+  @keyframes heroRise{
+    from{opacity:0;transform:translate3d(0,26px,0)}
+    to{opacity:1;transform:none}
+  }
+  @keyframes heroPop{
+    0%{opacity:0;transform:translate3d(0,26px,0) scale(.96)}
+    60%{opacity:1}
+    100%{opacity:1;transform:none}
+  }
+  @keyframes talentRise{
+    from{opacity:0;transform:translate3d(0,54px,0) scale(.985)}
+    to{opacity:1;transform:none}
+  }
+
+  .hero h1 .l1,
+  .hero h1 .l2,
+  .hero .hl,
+  .hero-lede,
+  .hero .btn-row,
+  .hero-img img{animation-fill-mode:both;animation-timing-function:cubic-bezier(.19,.82,.25,1)}
+
+  .hero h1 .l1{display:inline-block;animation:heroRise .72s .05s}
+  .hero h1 .l2{display:inline-block;animation:heroRise .72s .16s}
+  .hero .hl{display:inline-block;animation:heroPop .78s .30s}
+  .hero-lede{animation:heroRise .72s .44s}
+  .hero .btn-row{animation:heroRise .72s .56s}
+  .hero-img img{animation:talentRise 1.05s .40s}
+
+  /* a still frame for anyone who asked not to be moved */
+  @media (prefers-reduced-motion:reduce){
+    .hero h1 .l1,.hero h1 .l2,.hero .hl,
+    .hero-lede,.hero .btn-row,.hero-img img{animation:none;opacity:1;transform:none}
+  }
 
   /* ---------------- talent grid ---------------- */
   .t-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:32px;margin-top:58px;
