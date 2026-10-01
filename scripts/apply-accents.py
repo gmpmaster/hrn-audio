@@ -62,7 +62,10 @@ print("-" * 86)
 for s in shows:
     fill = REQUESTED[s["id"]]
     cr = contrast(fill)
-    if cr >= 4.5:
+    if s.get("textOverride"):
+        # brand colour kept for text by explicit request, contrast notwithstanding
+        text, note = s["accentText"], f"override, kept at {contrast(s['accentText']):.2f}"
+    elif cr >= 4.5:
         text, note = fill, "used verbatim"
     else:
         text = darken_until(fill)

@@ -88,8 +88,9 @@
       "magenta": "#DD267C"
     },
     "panel": "#FC7A1C",
-    "accentText": "#C25402",
-    "playInk": "#0E1A20"
+    "accentText": "#F96C03",
+    "playInk": "#0E1A20",
+    "textOverride": true
   },
   {
     "id": "buenas-tardes-el-patron",
