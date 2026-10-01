@@ -39,7 +39,6 @@ const opportunity = [
   <header class="hero">
     <div class="hero-bg" aria-hidden="true"></div>
     <div class="wrap hero-copy">
-      <p class="hero-eyebrow">HRN Media Networks</p>
       <h1>These are the voices<br />Hispanic America <span class="hl">turns on.</span></h1>
       <p class="hero-lede">
         The hosts they wake up to, drive home with, and turn up.
@@ -55,7 +54,7 @@ const opportunity = [
     </div>
 
     <div class="hero-img">
-      <img src="/img/lineup-trim.webp" fetchpriority="high"
+      <img src="/img/lineup-trim.webp" width="1960" height="787" fetchpriority="high"
            alt="HRN on-air talent" />
     </div>
   </header>
@@ -228,22 +227,23 @@ const opportunity = [
       radial-gradient(760px 620px at 6% 96%, rgba(124,77,255,.55), transparent 66%),
       linear-gradient(118deg,#00A7E2 0%,#1E7FE0 40%,#7C4DFF 76%,#C42BA6 100%);
   }
-  .hero-copy{position:relative;z-index:1;padding:52px 24px 0;text-align:center}
+  .hero-copy{position:relative;z-index:1;max-width:1560px;
+             padding:calc(var(--nav-h) + 10px) 24px 0;text-align:center}
   .hero-eyebrow{font-family:var(--head);font-size:.76rem;font-weight:700;letter-spacing:.22em;
                 text-transform:uppercase;color:rgba(255,255,255,.88);margin:0 0 22px}
   .hero h1{color:#fff;margin:0 0 20px;
-           font-size:clamp(2.5rem,7.6vw,6.6rem);line-height:.95;letter-spacing:-.038em;
+           font-size:clamp(2.3rem,6.6vw,6rem);line-height:.95;letter-spacing:-.038em;
            text-shadow:0 3px 34px rgba(10,20,40,.26)}
   .hl{color:#FFE45E}
   .hero-lede{font-size:clamp(1.05rem,1.7vw,1.4rem);color:rgba(255,255,255,.95);
              max-width:46ch;margin:0 auto;font-weight:600}
   .hero .btn-row{justify-content:center;margin-top:26px;margin-bottom:0}
 
-  .hero-img{position:relative;z-index:1;margin:-6px auto -1px;max-width:1180px;padding:0 10px}
+  .hero-img{position:relative;z-index:1;margin:-6px auto -1px;max-width:1080px;padding:0 10px}
   .hero-img img{width:100%;filter:drop-shadow(0 30px 50px rgba(6,20,40,.45))}
 
   @media(max-width:860px){
-    .hero-copy{padding:44px 24px 0}
+    .hero-copy{padding:calc(var(--nav-h) + 14px) 24px 0}
     .hero h1{line-height:1.02}
     .hero-img{margin-top:-2px;padding:0}
   }
