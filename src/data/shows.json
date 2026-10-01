@@ -15,9 +15,9 @@
     "daypart": "Middays",
     "demo": "A 25–54",
     "credential": "Emmy Award-winning host · 89% U.S. coverage",
-    "accent": "#00C0E4",
+    "accent": "#FC7A1C",
     "audio": "/audio/echate-pa-ca-regmex.mp3",
-    "photo": "/img/talent/ana-maria-canseco.jpg",
+    "photo": "/img/talent/echate-pa-ca.jpg",
     "stats": [
       {
         "value": "89%",
@@ -81,15 +81,14 @@
       }
     ],
     "logo": "/img/logos/echate-pa-ca.png",
-    "cutout": "/img/cutouts/echate-pa-ca-1.webp",
+    "cutout": "",
     "brand": {
       "teal": "#00A0BE",
       "orange": "#F66B03",
       "magenta": "#DD267C"
     },
-    "accent2": "#F66B03",
-    "panel": "#72D5EC",
-    "accentText": "#07819B"
+    "panel": "#FC7A1C",
+    "accentText": "#C45403"
   },
   {
     "id": "buenas-tardes-el-patron",
@@ -105,9 +104,9 @@
     "daypart": "Afternoon drive",
     "demo": "A 18–34 / 25–54",
     "credential": "Longest daily block on the network",
-    "accent": "#E1343F",
+    "accent": "#FC373E",
     "audio": "/audio/buenas-tardes-el-patron.mp3",
-    "photo": "/img/talent/el-patron.jpg",
+    "photo": "/img/talent/buenas-tardes-el-patron.jpg",
     "stats": [
       {
         "value": "4 hrs",
@@ -171,7 +170,8 @@
     ],
     "logo": "",
     "cutout": "",
-    "accentText": "#E1343F"
+    "accentText": "#ED040C",
+    "panel": "#FC373E"
   },
   {
     "id": "la-mezcla-fuego",
@@ -188,9 +188,9 @@
     "daypart": "Evenings / weekend",
     "demo": "A 18–34",
     "credential": "#1 Latin mix show in Miami",
-    "accent": "#6033C4",
+    "accent": "#5F34CA",
     "audio": "/audio/la-mezcla-fuego.mp3",
-    "photo": "/img/talent/dj-xtreme.jpg",
+    "photo": "/img/talent/la-mezcla-fuego.jpg",
     "stats": [
       {
         "value": "#1",
@@ -254,7 +254,8 @@
     ],
     "logo": "",
     "cutout": "",
-    "accentText": "#6033C4"
+    "accentText": "#5F34CA",
+    "panel": "#5F34CA"
   },
   {
     "id": "los-40-usa",
@@ -272,9 +273,9 @@
     "daypart": "Weekend",
     "demo": "A 18–49",
     "credential": "The world's #1 Hispanic music brand",
-    "accent": "#C42BA6",
+    "accent": "#ABF059",
     "audio": "/audio/los-40-usa.mp3",
-    "photo": "/img/talent/sebas.jpg",
+    "photo": "/img/talent/los-40-usa.jpg",
     "stats": [
       {
         "value": "Global",
@@ -338,7 +339,8 @@
     ],
     "logo": "",
     "cutout": "",
-    "accentText": "#C42BA6"
+    "accentText": "#4B810C",
+    "panel": "#ABF059"
   },
   {
     "id": "minuto-deportivo",
@@ -354,9 +356,9 @@
     "daypart": "Multiple dayparts",
     "demo": "HA 25–54",
     "credential": "23 years on air · TUDN match commentator",
-    "accent": "#00B86B",
+    "accent": "#011665",
     "audio": "/audio/minuto-deportivo.mp3",
-    "photo": "/img/talent/juan-arango.jpg",
+    "photo": "/img/talent/minuto-deportivo.jpg",
     "stats": [
       {
         "value": ":60",
@@ -420,6 +422,7 @@
     ],
     "logo": "",
     "cutout": "",
-    "accentText": "#00B86B"
+    "accentText": "#011665",
+    "panel": "#011665"
   }
 ]
