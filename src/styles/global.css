@@ -21,6 +21,7 @@
 
   /* neutrals — cool bias toward the cyan */
   --ink:#0E1A20;
+  --ink-2:#0A1419;        /* dark surface: nav scrolled, footer */
   --ink-soft:#33454F;
   --slate:#5E7280;
   --slate-lt:#8DA0AC;
@@ -28,6 +29,7 @@
   --mist:#F4F8FA;
   --mist-2:#EAF1F5;
   --line:#DBE6EC;
+  --line-d:rgba(255,255,255,.13);   /* hairline on dark surfaces */
 
   --shadow:0 20px 50px -22px rgba(14,26,32,.26);
   --shadow-lg:0 34px 80px -30px rgba(14,26,32,.34);
