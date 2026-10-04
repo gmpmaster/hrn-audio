@@ -53,9 +53,29 @@ const opportunity = [
       </div>
     </div>
 
-    <div class="hero-img">
-      <img src="/img/lineup-trim.webp" width="1960" height="787" fetchpriority="high"
-           alt="HRN on-air talent" />
+    <!-- Five separate cutouts, one per host, arranged to match Debbie's three composites
+         (cutouts/hero/*wide*, *mid*, *stacked*):
+           wide (desktop)  --o centre offset from the group's middle, in % of stage height;
+                           --t top / --h height in % of stage height. Wide screens stretch the
+                           offsets so the lineup spreads instead of growing.
+           mid (tablet)    --m*  and stacked (phone)  --s*: x / y / width in % of the stage,
+                           z = stacking order, f = -1 where the artwork mirrors the host. -->
+    <div class="hero-img" role="img" aria-label="HRN on-air talent: Sebas, Ana María Canseco, Juan Arango, El Patrón and DJ Xtreme">
+      <img class="fig" src="/img/hero/sebas.webp"  width="871" height="1025" alt="" fetchpriority="high"
+           style="--o:-86.36;--t:4.55;--h:105.8;--z:1;--d:.52s;
+                  --mx:-0.70;--my:11.34;--mw:43.28;--mz:2;--mf:1;--sx:48.03;--sy:37.39;--sw:50.46;--sz:4;--sf:-1" />
+      <img class="fig" src="/img/hero/ana.webp"    width="619" height="1025" alt="" fetchpriority="high"
+           style="--o:-43.39;--t:.41;--h:99.17;--z:2;--d:.46s;
+                  --mx:51.23;--my:0.25;--mw:29.15;--mz:4;--mf:-1;--sx:46.98;--sy:1.29;--sw:35.85;--sz:2;--sf:-1" />
+      <img class="fig" src="/img/hero/juan.webp"   width="886" height="857"  alt="" fetchpriority="high"
+           style="--o:4.34;--t:15.7;--h:84.3;--z:3;--d:.40s;
+                  --mx:30.28;--my:32.29;--mw:41.75;--mz:5;--mf:1;--sx:23.14;--sy:41.05;--sw:51.33;--sz:5;--sf:1" />
+      <img class="fig" src="/img/hero/patron.webp" width="720" height="1031" alt="" fetchpriority="high"
+           style="--o:49.79;--t:4.55;--h:104.13;--z:2;--d:.46s;
+                  --mx:22.78;--my:0;--mw:33.11;--mz:3;--mf:-1;--sx:10.79;--sy:1.29;--sw:41.59;--sz:1;--sf:-1" />
+      <img class="fig" src="/img/hero/dj.webp"     width="796" height="1030" alt="" fetchpriority="high"
+           style="--o:90.91;--t:1.24;--h:103.72;--z:1;--d:.52s;
+                  --mx:60.78;--my:11.59;--mw:39.33;--mz:1;--mf:1;--sx:2.26;--sy:36.10;--sw:46.11;--sz:3;--sf:1" />
     </div>
   </header>
 
@@ -245,13 +265,39 @@ const opportunity = [
              max-width:46ch;margin:0 auto;font-weight:600}
   .hero .btn-row{justify-content:center;margin-top:26px;margin-bottom:0}
 
-  .hero-img{position:relative;z-index:1;margin:-6px auto -1px;max-width:1080px;padding:0 10px}
-  .hero-img img{width:100%;filter:drop-shadow(0 30px 50px rgba(6,20,40,.45))}
+  /* The stage is sized by height; figures are % of that height. At the composite's own
+     proportions (~2.6:1) everyone sits exactly where the "wide" artwork put them. When the
+     stage is wider than that, the extra width is shared out along each figure's offset, so
+     the outer edges land on the stage edges (80vw) and the gaps open up evenly.
+     131.1 = outer edge offset, 88.6 = mean outer centre offset (both in % of height). */
+  .hero-img{position:relative;z-index:1;container-type:size;
+            width:80vw;height:clamp(230px,min(30.5vw,100svh - 464px),720px);margin:8px auto -1px;
+            clip-path:inset(-60% -12vw 0 -12vw)}
+  .hero-img .fig{position:absolute;bottom:auto;top:calc(var(--t) * 1%);height:calc(var(--h) * 1%);
+            width:auto;max-width:none;z-index:var(--z);translate:-50% 0;
+            left:calc(50% + var(--o) * 1cqh + var(--o) / 88.6 * max(0px, 50cqw - 131.1cqh));
+            filter:drop-shadow(0 30px 50px rgba(6,20,40,.45))}
 
   @media(max-width:860px){
     .hero-copy{padding:calc(var(--nav-h) + 14px) 24px 0}
     .hero h1{line-height:1.02}
-    .hero-img{margin-top:-2px;padding:0}
+  }
+
+  /* Below desktop the stage takes the composite's own proportions and the figures are
+     placed by x / y / width; the width is held back on short screens so the lineup
+     still starts above the fold. */
+  @media(max-width:1023px),(max-width:1366px) and (orientation:portrait){
+    .hero-img{height:auto;aspect-ratio:2120/1217;
+              width:min(94vw,820px,calc((100svh - 400px) * 2120 / 1217));min-width:min(100vw,440px);
+              container-type:normal;margin-top:4px}
+    .hero-img .fig{left:calc(var(--mx) * 1%);top:calc(var(--my) * 1%);width:calc(var(--mw) * 1%);
+              height:auto;translate:none;scale:var(--mf) 1;z-index:var(--mz)}
+  }
+  @media(max-width:599px){
+    .hero-img{aspect-ratio:1724/1396;
+              width:clamp(300px,calc((100svh - 492px) * 1724 / 1396),100vw);min-width:0;margin-top:10px}
+    .hero-img .fig{left:calc(var(--sx) * 1%);top:calc(var(--sy) * 1%);width:calc(var(--sw) * 1%);
+              scale:var(--sf) 1;z-index:var(--sz)}
   }
   .btn-white{background:#fff;color:var(--ink);border-color:#fff;box-shadow:0 12px 30px -12px rgba(6,20,40,.5)}
   .btn-white:hover{background:#FFE45E;border-color:#FFE45E}
@@ -285,19 +331,19 @@ const opportunity = [
   .hero .hl,
   .hero-lede,
   .hero .btn-row,
-  .hero-img img{animation-fill-mode:both;animation-timing-function:cubic-bezier(.19,.82,.25,1)}
+  .hero-img .fig{animation-fill-mode:both;animation-timing-function:cubic-bezier(.19,.82,.25,1)}
 
   .hero h1 .l1{display:inline-block;animation:heroRise .72s .05s}
   .hero h1 .l2{display:inline-block;animation:heroRise .72s .16s}
   .hero .hl{display:inline-block;animation:heroPop .78s .30s}
   .hero-lede{animation:heroRise .72s .44s}
   .hero .btn-row{animation:heroRise .72s .56s}
-  .hero-img img{animation:talentRise 1.05s .40s}
+  .hero-img .fig{animation:talentRise 1.05s var(--d)}
 
   /* a still frame for anyone who asked not to be moved */
   @media (prefers-reduced-motion:reduce){
     .hero h1 .l1,.hero h1 .l2,.hero .hl,
-    .hero-lede,.hero .btn-row,.hero-img img{animation:none;opacity:1;transform:none}
+    .hero-lede,.hero .btn-row,.hero-img .fig{animation:none;opacity:1;transform:none}
   }
 
   /* ---------------- talent grid ---------------- */
