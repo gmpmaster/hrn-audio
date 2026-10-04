@@ -56,8 +56,8 @@ const opportunity = [
     <!-- Five separate cutouts, one per host, arranged to match Debbie's three composites
          (cutouts/hero/*wide*, *mid*, *stacked*):
            wide (desktop)  --o centre offset from the group's middle, in % of stage height;
-                           --t top / --h height in % of stage height. Wide screens stretch the
-                           offsets so the lineup spreads instead of growing.
+                           --t top / --h height in % of stage height. The group always keeps
+                           the artwork's overlap; it scales with the stage, never spreads.
            mid (tablet)    --m*  and stacked (phone)  --s*: x / y / width in % of the stage,
                            z = stacking order, f = -1 where the artwork mirrors the host. -->
     <div class="hero-img" role="img" aria-label="HRN on-air talent: Sebas, Ana María Canseco, Juan Arango, El Patrón and DJ Xtreme">
@@ -68,8 +68,8 @@ const opportunity = [
            style="--o:-43.39;--t:.41;--h:99.17;--z:2;--d:.46s;
                   --mx:51.23;--my:0.25;--mw:29.15;--mz:4;--mf:-1;--sx:46.98;--sy:1.29;--sw:35.85;--sz:2;--sf:-1" />
       <img class="fig" src="/img/hero/juan.webp"   width="886" height="857"  alt="" fetchpriority="high"
-           style="--o:4.34;--t:15.7;--h:84.3;--z:3;--d:.40s;
-                  --mx:30.28;--my:32.29;--mw:41.75;--mz:5;--mf:1;--sx:23.14;--sy:41.05;--sw:51.33;--sz:5;--sf:1" />
+           style="--o:4.34;--t:18.7;--h:84.3;--z:3;--d:.40s;
+                  --mx:30.28;--my:33.3;--mw:41.75;--mz:5;--mf:1;--sx:23.14;--sy:42.1;--sw:51.33;--sz:5;--sf:1" />
       <img class="fig" src="/img/hero/patron.webp" width="720" height="1031" alt="" fetchpriority="high"
            style="--o:49.79;--t:4.55;--h:104.13;--z:2;--d:.46s;
                   --mx:22.78;--my:0;--mw:33.11;--mz:3;--mf:-1;--sx:10.79;--sy:1.29;--sw:41.59;--sz:1;--sf:-1" />
@@ -265,17 +265,16 @@ const opportunity = [
              max-width:46ch;margin:0 auto;font-weight:600}
   .hero .btn-row{justify-content:center;margin-top:26px;margin-bottom:0}
 
-  /* The stage is sized by height; figures are % of that height. At the composite's own
-     proportions (~2.6:1) everyone sits exactly where the "wide" artwork put them. When the
-     stage is wider than that, the extra width is shared out along each figure's offset, so
-     the outer edges land on the stage edges (80vw) and the gaps open up evenly.
-     131.1 = outer edge offset, 88.6 = mean outer centre offset (both in % of height). */
+  /* The stage is sized by height and figures are placed in % of that height, so the group
+     keeps the "wide" artwork's overlap at every size; on wide screens it simply centres.
+     Height aims to fit above the fold, between 25vw (group ~65% wide) and 30.5vw (80%):
+     on short windows the group stays big and the lower bodies run past the fold. */
   .hero-img{position:relative;z-index:1;container-type:size;
-            width:80vw;height:clamp(230px,min(30.5vw,100svh - 464px),720px);margin:8px auto -1px;
+            width:80vw;height:clamp(230px,max(25vw,min(30.5vw,100svh - 464px)),720px);margin:8px auto -1px;
             clip-path:inset(-60% -12vw 0 -12vw)}
   .hero-img .fig{position:absolute;bottom:auto;top:calc(var(--t) * 1%);height:calc(var(--h) * 1%);
             width:auto;max-width:none;z-index:var(--z);translate:-50% 0;
-            left:calc(50% + var(--o) * 1cqh + var(--o) / 88.6 * max(0px, 50cqw - 131.1cqh));
+            left:calc(50% + var(--o) * 1cqh);
             filter:drop-shadow(0 30px 50px rgba(6,20,40,.45))}
 
   @media(max-width:860px){
