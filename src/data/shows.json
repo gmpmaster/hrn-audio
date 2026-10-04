@@ -115,19 +115,19 @@
         "label": "weekday block"
       },
       {
-        "value": "",
+        "value": "21",
         "label": "stations",
-        "needs": true
+        "needs": false
       },
       {
-        "value": "",
+        "value": "20",
         "label": "markets",
-        "needs": true
+        "needs": false
       },
       {
-        "value": "",
+        "value": "23K",
         "label": "social followers",
-        "needs": true
+        "needs": false
       }
     ],
     "hasDemo": false,
@@ -146,13 +146,13 @@
     "socials": [
       {
         "net": "instagram",
-        "url": "https://www.instagram.com/btconelpatron/",
-        "followers": ""
+        "url": "https://www.instagram.com/elpatronalaire/",
+        "followers": "13K"
       },
       {
         "net": "facebook",
-        "url": "",
-        "followers": ""
+        "url": "https://www.facebook.com/ELPatronalaire",
+        "followers": "10K"
       },
       {
         "net": "x",
