@@ -5,6 +5,20 @@
 [build.environment]
   NODE_VERSION = "22"
 
+# The site moved from audio. to radio.hrnmedianetworks.com (2026-10-05). Netlify serves
+# domain aliases as-is, so the old address needs an explicit permanent redirect.
+[[redirects]]
+  from = "https://audio.hrnmedianetworks.com/*"
+  to = "https://radio.hrnmedianetworks.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://audio.hrnmedianetworks.com/*"
+  to = "https://radio.hrnmedianetworks.com/:splat"
+  status = 301
+  force = true
+
 # Staging only — DELETE before this goes live on radio.hrnmedianetworks.com
 [[headers]]
   for = "/*"
