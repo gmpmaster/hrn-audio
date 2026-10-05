@@ -18,13 +18,13 @@ const socialIcon: Record<string, string> = {
 // 4.5:1, and each card blends into the next so the row reads as one sweep.
 const about = [
   { t: 'Cultural Ties', d: 'Authentic voices. Relevant content. Programming that resonates with Hispanic audiences across generations.',
-    bg: 'linear-gradient(135deg,#007EAA,#1C76D0)', icon: 'M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1.1L12 21l7.8-7.6 1-1.1a5.5 5.5 0 0 0 0-7.7z' },
-  { t: 'Proven Reach', d: 'With 345 affiliates and 95% U.S. coverage, HRN puts your message on air and in the community.',
-    bg: 'linear-gradient(135deg,#1C76D0,#5B5BEF)', icon: 'M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0V4zM7 6H4a3 3 0 0 0 3 4M17 6h3a3 3 0 0 1-3 4' },
+    bg: 'linear-gradient(135deg,#087CBC,#3673DB)', corner: 'br', k: .84, icon: 'M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1.1L12 21l7.8-7.6 1-1.1a5.5 5.5 0 0 0 0-7.7z' },
+  { t: 'Proven Reach', d: 'With 500 affiliates and 95% U.S. coverage, HRN puts your message on air and in the community.',
+    bg: 'linear-gradient(135deg,#3673DB,#5B5BEF)', corner: 'tl', k: 1, icon: 'M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0V4zM7 6H4a3 3 0 0 0 3 4M17 6h3a3 3 0 0 1-3 4' },
   { t: 'Star Power', d: 'From national icons to emerging voices, our influencers know how to move audiences — and move the needle.',
-    bg: 'linear-gradient(135deg,#5B5BEF,#9A3ED6)', icon: 'M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3zM19 10v2a7 7 0 0 1-14 0v-2M12 19v3M8 22h8' },
+    bg: 'linear-gradient(135deg,#5B5BEF,#9A3ED6)', corner: 'bl', k: .96, icon: 'M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3zM19 10v2a7 7 0 0 1-14 0v-2M12 19v3M8 22h8' },
   { t: 'Smart Buys', d: 'From live reads and sponsorships to custom regional buys, we help brands connect in real time.',
-    bg: 'linear-gradient(135deg,#9A3ED6,#C42BA6)', icon: 'M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.2 1 2V17h6v-.3c0-.8.4-1.5 1-2A7 7 0 0 0 12 2z' },
+    bg: 'linear-gradient(135deg,#9A3ED6,#C42BA6)', corner: 'tr', k: .96, icon: 'M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.2 1 2V17h6v-.3c0-.8.4-1.5 1-2A7 7 0 0 0 12 2z' },
 ];
 
 const buy = [
@@ -98,7 +98,7 @@ const opportunity = [
   <section id="about" class="mist about">
     <div class="wrap">
       <div class="center">
-        <p class="eyebrow">#1 Nielsen Rated Hispanic Network</p>
+        <p class="eyebrow">#1 Hispanic Radio Network</p>
         <h2>National Voices. Local Trust.</h2>
         <p class="lede" style="margin-top:16px">
           Reach Hispanic listeners through trusted local stations, nationally syndicated
@@ -107,9 +107,11 @@ const opportunity = [
       </div>
       <div class="grid g4" style="margin-top:52px">
         {about.map((a) => (
-          <div class="ab-card" style={`--bg:${a.bg}`}>
-            <svg viewBox="0 0 24 24" width="46" height="46" fill="none" stroke="currentColor" stroke-width="1.6"
-                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d={a.icon} /></svg>
+          <div class:list={['ab-card', `c-${a.corner}`]} style={`--bg:${a.bg}`}>
+            <span class="ab-ic" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width={1.6 / a.k}
+                   stroke-linecap="round" stroke-linejoin="round" style={`transform:scale(${a.k})`}><path d={a.icon} /></svg>
+            </span>
             <h3>{a.t}</h3>
             <p>{a.d}</p>
           </div>
@@ -189,22 +191,26 @@ const opportunity = [
   <!-- ============================ NETWORK ============================= -->
   <section id="network" class="on-dark net">
     <div class="wrap center">
-      <p class="eyebrow">#1 Hispanic Radio Network in the U.S.</p>
+      <p class="eyebrow">The Largest Independent Hispanic Audio Network</p>
       <h2>Built for Brands. Backed by Trust.</h2>
       <p class="lede" style="margin-top:18px">
         HRN Media Networks is the largest independent Hispanic audio network in the U.S.,
-        reaching 95% of the nation's Hispanic population through 345 affiliate stations across
+        reaching 95% of the nation's Hispanic population through 500 affiliate stations across
         95 markets. Stations choose to carry our influencers, so a brand inside HRN programming
         arrives with the influencer's credibility and the station's own attached.
       </p>
 
       <div class="net-stats">
         <div class="net-strip">
-          <div><span class="stat">345</span><span>affiliate stations</span></div>
+          <div><span class="stat">500</span><span>affiliate stations</span></div>
           <div><span class="stat">95</span><span>markets</span></div>
           <div><span class="stat">95%</span><span>of U.S. Hispanics</span></div>
+          <div><span class="stat">#1</span><span>in 14 Hispanic DMAs</span></div>
         </div>
-        <div class="net-one"><span class="stat">#1</span><span>in 14 Hispanic DMAs</span></div>
+        <div class="net-one">
+          <span class="stat">#1</span>
+          <span class="net-one-t">Nielsen Rated Hispanic Radio Network</span>
+        </div>
       </div>
       <p class="src">Ninety cents of every advertising dollar goes back to the affiliate stations, 141 of which are minority-owned.</p>
     </div>
@@ -385,11 +391,18 @@ const opportunity = [
            border-radius:16px;padding:34px 28px 36px;text-align:center;
            box-shadow:0 22px 44px -26px rgba(40,30,120,.55);
            transition:transform .2s, box-shadow .2s}
-  .ab-card::after{content:"";position:absolute;right:-38px;bottom:-38px;width:150px;height:150px;
+  .ab-card::after{content:"";position:absolute;width:150px;height:150px;
            border-radius:36px;background:rgba(255,255,255,.10);transform:rotate(18deg);pointer-events:none;z-index:0}
   .ab-card > *{position:relative;z-index:1}
   .ab-card:hover{transform:translateY(-5px)}
-  .ab-card svg{display:block;margin:0 auto 18px}
+  /* the corner shape walks round the row: bottom-right, top-left, bottom-left, top-right */
+  .ab-card.c-br::after{right:-38px;bottom:-38px}
+  .ab-card.c-tl::after{left:-38px;top:-38px}
+  .ab-card.c-bl::after{left:-38px;bottom:-38px}
+  .ab-card.c-tr::after{right:-38px;top:-38px}
+  /* every icon sits in the same 46px box; k scales each glyph to the same optical size */
+  .ab-ic{display:block;width:46px;height:46px;margin:0 auto 18px}
+  .ab-ic svg{display:block;width:100%;height:100%;transform-origin:center}
   .ab-card h3{color:inherit;margin:0 0 10px;font-size:1.22rem}
   .ab-card p{color:inherit;margin:0;font-size:.98rem;line-height:1.55;opacity:.92}
 
@@ -446,38 +459,42 @@ const opportunity = [
   .soc em{font-style:normal;font-family:var(--head);font-size:.82rem;font-weight:600;
           font-variant-numeric:tabular-nums}
 
-  /* the sixth cell: no frame, just the line and one arrow, bottom right */
-  .tc-more{text-decoration:none;justify-content:space-between;align-items:stretch;
+  /* the sixth cell: no frame, just the line with its arrow, centred */
+  .tc-more{text-decoration:none;justify-content:center;align-items:center;text-align:center;
            padding:36px 32px;background:transparent;border:0;box-shadow:none;color:var(--ink);gap:0}
   .tc-more:hover{transform:none;box-shadow:none}
   .tc-more h3{color:var(--ink);font-size:clamp(2rem,3.4vw,2.9rem);letter-spacing:-.03em;line-height:1.05;
-              margin:0;max-width:9ch;transition:color .2s}
+              margin:0 auto;max-width:9ch;transition:color .2s}
   .tc-more:hover h3{color:var(--pretitle)}
-  .more-i{align-self:flex-end;width:64px;height:64px;border-radius:50%;background:var(--pretitle);color:#fff;
-          display:grid;place-items:center;margin-top:28px;
+  .more-i{align-self:center;width:64px;height:64px;border-radius:50%;background:var(--pretitle);color:#fff;
+          display:grid;place-items:center;margin-top:22px;
           box-shadow:0 10px 26px -10px rgba(23,166,223,.8);transition:transform .25s ease}
   .more-i svg{width:30px;height:30px}
   .tc-more:hover .more-i{transform:translateX(6px)}
 
   /* ---------------- network ---------------- */
   .net{background:linear-gradient(140deg,#0E1A20 0%,#123243 58%,#0E1A20 100%)}
-  /* three counts share one shaded panel; the #1 sits in its own box, edged in the hero gradient */
-  .net-stats{display:grid;grid-template-columns:3fr 1fr;gap:18px;margin-top:48px;text-align:center}
-  .net-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;align-items:start;
-             background:rgba(255,255,255,.06);border:1px solid var(--line-d);border-radius:18px;padding:30px 24px}
-  .net-strip div,.net-one{display:flex;flex-direction:column;gap:7px;align-items:center}
-  .net-strip .stat,.net-one .stat{font-size:2.4rem;color:var(--cyan-br)}
-  .net-strip span:last-child,.net-one span:last-child{font-size:.88rem;color:#93A6B2}
-  .net-one{justify-content:center;border-radius:18px;padding:30px 20px;
+  /* 2/3: four equal counts in one shaded panel (2 x 2). 1/3: the Nielsen #1, same height,
+     edged in the hero gradient */
+  .net-stats{display:grid;grid-template-columns:2fr 1fr;gap:18px;margin-top:48px;text-align:center;
+             align-items:stretch}
+  .net-strip{display:grid;grid-template-columns:repeat(2,1fr);gap:34px 22px;align-content:center;
+             background:rgba(255,255,255,.06);border:1px solid var(--line-d);border-radius:18px;padding:36px 24px}
+  .net-strip div{display:flex;flex-direction:column;gap:7px;align-items:center}
+  .net-strip .stat{font-size:2.6rem;color:var(--cyan-br)}
+  .net-strip span:last-child{font-size:.9rem;color:#93A6B2}
+  .net-one{display:flex;flex-direction:column;gap:12px;align-items:center;justify-content:center;
+           border-radius:18px;padding:32px 26px;
            background:linear-gradient(#13212a,#13212a) padding-box,
                       linear-gradient(118deg,#00A7E2,#1E7FE0 40%,#7C4DFF 76%,#C42BA6) border-box;
            border:2px solid transparent;box-shadow:0 18px 44px -24px rgba(124,77,255,.7)}
-  .net-one .stat{font-size:2.9rem;color:#fff}
-  .net-one span:last-child{color:#C8D6DE}
+  .net-one .stat{font-size:clamp(4rem,7vw,5.6rem);color:#fff;letter-spacing:-.04em}
+  .net-one-t{font-family:var(--head);font-weight:800;font-size:clamp(1.25rem,1.9vw,1.6rem);
+             line-height:1.15;color:#fff;max-width:13ch;text-wrap:balance}
   @media(max-width:760px){
     .net-stats{grid-template-columns:1fr}
-    .net-strip{grid-template-columns:repeat(3,1fr);gap:12px;padding:24px 12px}
-    .net-strip .stat{font-size:1.9rem}
+    .net-strip{gap:26px 12px;padding:28px 12px}
+    .net-strip .stat{font-size:2.1rem}
   }
 
   /* ---------------- opportunity ---------------- */
