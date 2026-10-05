@@ -5,7 +5,7 @@
 [build.environment]
   NODE_VERSION = "22"
 
-# Staging only — DELETE before this goes live on audio.hrnmedianetworks.com
+# Staging only — DELETE before this goes live on radio.hrnmedianetworks.com
 [[headers]]
   for = "/*"
   [headers.values]

@@ -3,7 +3,7 @@
   "type": "module",
   "version": "0.1.0",
   "private": true,
-  "description": "HRN Audio — audio.hrnmedianetworks.com",
+  "description": "HRN Hispanic Radio Network — radio.hrnmedianetworks.com",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
