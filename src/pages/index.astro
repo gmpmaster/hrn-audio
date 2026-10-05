@@ -43,11 +43,11 @@ const buy = [
 ];
 
 const opportunity = [
-  ['20%', 'of the U.S. population is Hispanic', ''],
-  ['5th', 'largest GDP in the world if U.S. Hispanics were a country', 'Latino Donor Collaborative'],
-  ['~11 yrs', 'younger median age than the non-Hispanic white population', 'Pew Research'],
-  ['3.6%', 'of U.S. ad spend goes to Hispanic media', 'ANA / AIMM'],
-];
+  ['21%', "of the U.S. population is Hispanic — that's 1 in 5 Americans", 'U.S. Census'],
+  ['4th', 'largest GDP in the world if U.S. Hispanics were a country', 'Latino Donor Collaborative'],
+  ['$2.8T', 'in U.S. Latino household consumption', 'Latino Donor Collaborative'],
+  ['31 yrs', 'median age of the U.S. Hispanic population', 'U.S. Census'],
+]
 ---
 
 <Base
@@ -246,16 +246,17 @@ const opportunity = [
   <section id="opportunity" class="mist">
     <div class="wrap">
       <div class="center">
-        <p class="eyebrow">The opportunity</p>
-        <h2>The audience is growing.<br />The spend isn't.</h2>
+        <p class="eyebrow">The Audience</p>
+        <h2>The Audience is Growing.<br />So is the Opportunity.</h2>
         <p class="lede" style="margin-top:18px">
           Hispanic audiences are younger, larger and more brand-loyal than the general
-          market — and still dramatically under-invested against.
+          market — and they're shaping American culture, from music and food to sports,
+          style and what's trending next.
         </p>
       </div>
       <div class="grid g4 opp">
         {opportunity.map(([v, l, src], i) => (
-          <div class="opp-c" style={`--c:${['var(--red)','var(--violet)','var(--green)','var(--amber)'][i]}`}>
+          <div class="opp-c" style={`--c:${['#087CBC','#3673DB','#5B5BEF','#9A3ED6'][i]}`}>
             <div class="stat opp-v">{v}</div>
             <p class="opp-l">{l}</p>
             {src && <p class="opp-s">{src}</p>}
@@ -522,8 +523,9 @@ const opportunity = [
 
   /* ---------------- opportunity ---------------- */
   .opp{margin-top:52px}
-  .opp-c{background:#fff;border-radius:14px;padding:28px 24px;border-top:4px solid var(--c)}
-  .opp-v{font-size:2.7rem;color:var(--c)}
+  /* one colour per column, from the about cards: thin full outline + the number in that colour */
+  .opp-c{background:#fff;border-radius:14px;padding:28px 24px;border:1.5px solid var(--c)}
+  .opp-v{font-size:2.7rem;font-weight:800;color:var(--c)}
   .opp-l{font-size:.95rem;color:var(--slate);margin:10px 0 0}
   .opp-s{font-size:.74rem;color:var(--slate-lt);margin:6px 0 0}
 
