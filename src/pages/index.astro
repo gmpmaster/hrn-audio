@@ -196,8 +196,7 @@ const opportunity = [
       <p class="lede" style="margin-top:18px">
         HRN Media Networks is the largest independent Hispanic audio network in the U.S.,
         reaching 95% of the nation's Hispanic population through 500 affiliate stations across
-        95 markets. Stations choose to carry our influencers, so a brand inside HRN programming
-        arrives with the influencer's credibility and the station's own attached.
+        95 markets.
       </p>
 
       <div class="net-stats">
@@ -205,10 +204,10 @@ const opportunity = [
           <div><span class="stat">500</span><span>affiliate stations</span></div>
           <div><span class="stat">95</span><span>markets</span></div>
           <div><span class="stat">95%</span><span>of U.S. Hispanics</span></div>
-          <div><span class="stat">#1</span><span>in 14 Hispanic DMAs</span></div>
+          <div><span class="stat">100%</span><span>Top 10 &amp; Top 20 DMAs</span></div>
         </div>
         <div class="net-one">
-          <span class="stat">#1</span>
+          <span class="stat"><span class="hash">#</span>1</span>
           <span class="net-one-t">Nielsen Rated Hispanic Radio Network</span>
         </div>
       </div>
@@ -473,7 +472,7 @@ const opportunity = [
   .tc-more:hover .more-i{transform:translateX(6px)}
 
   /* ---------------- network ---------------- */
-  .net{background:linear-gradient(140deg,#0E1A20 0%,#123243 58%,#0E1A20 100%)}
+  .net{background:#13212a}
   /* 2/3: four equal counts in one shaded panel (2 x 2). 1/3: the Nielsen #1, same height,
      edged in the hero gradient */
   .net-stats{display:grid;grid-template-columns:2fr 1fr;gap:18px;margin-top:48px;text-align:center;
@@ -485,12 +484,14 @@ const opportunity = [
   .net-strip span:last-child{font-size:.9rem;color:#93A6B2}
   .net-one{display:flex;flex-direction:column;gap:12px;align-items:center;justify-content:center;
            border-radius:18px;padding:32px 26px;
-           background:linear-gradient(#13212a,#13212a) padding-box,
+           background:linear-gradient(#1B2D38,#1B2D38) padding-box,
                       linear-gradient(118deg,#00A7E2,#1E7FE0 40%,#7C4DFF 76%,#C42BA6) border-box;
            border:2px solid transparent;box-shadow:0 18px 44px -24px rgba(124,77,255,.7)}
   .net-one .stat{font-size:clamp(4rem,7vw,5.6rem);color:#fff;letter-spacing:-.04em}
-  .net-one-t{font-family:var(--head);font-weight:800;font-size:clamp(1.25rem,1.9vw,1.6rem);
-             line-height:1.15;color:#fff;max-width:13ch;text-wrap:balance}
+  .net-one .hash{font-size:.56em;vertical-align:.5em;margin-right:.03em;letter-spacing:0}
+  .net-one-t{font-family:var(--head);font-weight:500;font-size:clamp(1rem,1.45vw,1.2rem);
+             text-transform:uppercase;letter-spacing:.06em;
+             line-height:1.3;color:#fff;max-width:16ch;text-wrap:balance}
   @media(max-width:760px){
     .net-stats{grid-template-columns:1fr}
     .net-strip{gap:26px 12px;padding:28px 12px}
