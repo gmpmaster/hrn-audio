@@ -28,12 +28,18 @@ const about = [
 ];
 
 const buy = [
-  ['Sponsorships', 'Own a segment, a feature or a tentpole moment, with billboards and named integration.', 'var(--red)'],
-  ['Influencer reads', 'The endorsement listeners already trust, read live by the voice they trust it from.', 'var(--amber)'],
-  ['National spots', ':30 and :60 across the full network. One buy, one report.', 'var(--magenta)'],
-  ['Custom networks', 'Station groupings built around a message, a category or a moment.', 'var(--violet)'],
-  ['Influencer activation', 'Influencers extending a campaign into their own social followings.', 'var(--green)'],
-  ['Digital audio', 'Streaming, podcast and companion display, planned by language.', 'var(--cyan)'],
+  ['Sponsorships', 'Own a segment, a feature or a tentpole moment, with billboards and named integration.', '#087CBC',
+   '<path d="M5 21V4M5 4h11l-2.5 4.5L16 13H5"/>'],
+  ['Influencer Reads', 'The endorsement listeners already trust, read live by the voice they trust it from.', '#3673DB',
+   '<path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3zM19 10v2a7 7 0 0 1-14 0v-2M12 19v3M8 22h8"/>'],
+  ['National Spots', ':30 and :60 across the full network. One buy, one report.', '#5B5BEF',
+   '<circle cx="12" cy="10" r="2"/><path d="M12 12v10M8.5 6.5a5 5 0 0 0 0 7M15.5 6.5a5 5 0 0 1 0 7M5.6 3.6a9 9 0 0 0 0 12.8M18.4 3.6a9 9 0 0 1 0 12.8"/>'],
+  ['Custom Networks', 'Station groupings built around a message, a category or a moment.', '#5B5BEF',
+   '<circle cx="12" cy="5" r="2.2"/><circle cx="5" cy="19" r="2.2"/><circle cx="19" cy="19" r="2.2"/><path d="M12 7.2v4.3M12 11.5l-5.4 5.8M12 11.5l5.4 5.8"/>'],
+  ['Influencer Activation', 'Influencers extending a campaign into their own social followings.', '#087CBC',
+   '<path d="M3 11v2a1 1 0 0 0 1 1h2l5 4V6L6 10H4a1 1 0 0 0-1 1zM15 9a3 3 0 0 1 0 6M18 6a7 7 0 0 1 0 12"/>'],
+  ['Digital Audio', 'Streaming, podcast and companion display, planned by language.', '#3673DB',
+   '<path d="M4 15v-3a8 8 0 0 1 16 0v3M4 15a2 2 0 0 1 2-2h1v6H6a2 2 0 0 1-2-2zM20 15a2 2 0 0 0-2-2h-1v6h1a2 2 0 0 0 2-2z"/>'],
 ];
 
 const opportunity = [
@@ -220,10 +226,18 @@ const opportunity = [
     <div class="wrap">
       <div class="center">
         <p class="eyebrow">Reach. Connect. Engage.</p>
-        <h2>Solutions That Speak the Language</h2>
+        <h2>Solutions that Speak the Language</h2>
       </div>
-      <div class="grid g3" style="margin-top:56px">
-        {buy.map(([t, d, c]) => <div class="card" style={`--c:${c}`}><h3>{t}</h3><p>{d}</p></div>)}
+      <div class="grid g3 buy-grid" style="margin-top:56px">
+        {buy.map(([t, d, c, icon]) => (
+          <div class="card" style={`--c:${c}`}>
+            <span class="buy-ic" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"
+                   stroke-linecap="round" stroke-linejoin="round" set:html={icon} />
+            </span>
+            <h3>{t}</h3><p>{d}</p>
+          </div>
+        ))}
       </div>
     </div>
   </section>
@@ -384,6 +398,14 @@ const opportunity = [
     .hero h1 .l1,.hero h1 .l2,.hero .hl,
     .hero-lede,.hero .btn-row,.hero-img .fig{animation:none;opacity:1;transform:none}
   }
+
+  /* ad options: no colour rule on top; each card carries a tinted icon chip instead. Colours
+     are teal, blue and violet from the about cards (no pink), ordered so none repeats down
+     a column (teal blue violet / violet teal blue) */
+  .buy-grid .card{border-top:1px solid var(--line)}
+  .buy-ic{display:grid;place-items:center;width:46px;height:46px;border-radius:12px;margin-bottom:18px;
+          background:color-mix(in srgb, var(--c) 12%, #fff);color:var(--c)}
+  .buy-ic svg{width:24px;height:24px}
 
   /* ---------------- about cards ---------------- */
   .ab-card{position:relative;overflow:hidden;height:100%;background:var(--bg);color:#fff;
