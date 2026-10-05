@@ -13,11 +13,11 @@ DATA = os.path.join(PROJ, "src", "data", "shows.json")
 
 # requested fill colours, per show
 REQUESTED = {
-    "echate-pa-ca":            "#F96C03",   # corrected by Debbie
-    "buenas-tardes-el-patron": "#FC373E",   # unchanged
-    "la-mezcla-fuego":         "#5340EA",
-    "los-40-usa":              "#56C83C",
-    "minuto-deportivo":        "#0148D4",
+    "echate-pa-ca":            "#00C5DC",   # Debbie, 2026-10-04: fill AND text, white play icon
+    "buenas-tardes-el-patron": "#5B37CF",   # Debbie, 2026-10-04
+    "la-mezcla-fuego":         "#FF224D",   # Debbie, 2026-10-04
+    "los-40-usa":              "#009FFF",   # Debbie, 2026-10-04 (new blue card art)
+    "minuto-deportivo":        "#0148D4",   # matches the new blue card art
 }
 
 
@@ -73,8 +73,9 @@ for s in shows:
 
     s["accent"] = fill
     s["accentText"] = text
-    # white on the fill is weak for these, so the play glyph goes dark instead
-    s["playInk"] = "#0E1A20" if contrast("#FFFFFF", fill) < 3.0 else "#FFFFFF"
+    # white on the fill is weak for these, so the play glyph goes dark instead,
+    # unless a show asks for a specific glyph colour (playInkOverride)
+    s["playInk"] = s.get("playInkOverride") or ("#0E1A20" if contrast("#FFFFFF", fill) < 3.0 else "#FFFFFF")
 
     print(f"{s['id']:26} {fill}  {cr:>7.2f}:1  {text}  {contrast(text):>7.2f}:1  {note}")
 

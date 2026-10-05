@@ -124,7 +124,9 @@ const opportunity = [
       <p class="eyebrow">The Influencers</p>
       <h2>Press play.</h2>
       <p class="lede" style="margin-top:16px">
-        Their audiences trust them every day. Thirty seconds of any demo will tell you why.
+        From middays to afternoon drive to the weekend countdown, these influencers entertain,
+        connect and deliver for U.S. Hispanic audiences every day. Stations get proven programming.
+        Brands get a voice listeners already trust. Press play on any card and hear it for yourself.
       </p>
     </div>
 
@@ -175,17 +177,10 @@ const opportunity = [
 
       <!-- the sixth cell: everything not featured here -->
       <a class="tc tc-more" href="/shows">
+        <h3>Explore the full lineup</h3>
         <span class="more-i" aria-hidden="true">
           <svg viewBox="0 0 24 24"><path d="M4 12h15M13 5l7 7-7 7" stroke="currentColor"
             stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
-        </span>
-        <h3>And there's more where these came from.</h3>
-        <p>Tejano Nation, Minuto 60, the 24/7 formats and every other show on the
-           network — each with a demo you can play.</p>
-        <span class="more-cta">Hear the rest
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 5l7 7-7 7"
-            stroke="currentColor" stroke-width="2.6" stroke-linecap="round"
-            stroke-linejoin="round" fill="none"/></svg>
         </span>
       </a>
     </div>
@@ -194,20 +189,22 @@ const opportunity = [
   <!-- ============================ NETWORK ============================= -->
   <section id="network" class="on-dark net">
     <div class="wrap center">
-      <p class="eyebrow">The influencer network</p>
-      <h2>Stations choose to carry these influencers.</h2>
+      <p class="eyebrow">#1 Hispanic Radio Network in the U.S.</p>
+      <h2>Built for Brands. Backed by Trust.</h2>
       <p class="lede" style="margin-top:18px">
-        HRN represents nationally syndicated Hispanic programming. Affiliates are not bought —
-        they opt in, because the shows perform for their audience, and they can drop them the
-        moment that stops. A brand inside HRN programming arrives with the influencer's
-        credibility and the station's own attached.
+        HRN Media Networks is the largest independent Hispanic audio network in the U.S.,
+        reaching 95% of the nation's Hispanic population through 345 affiliate stations across
+        95 markets. Stations choose to carry our influencers, so a brand inside HRN programming
+        arrives with the influencer's credibility and the station's own attached.
       </p>
 
-      <div class="net-strip">
-        <div><span class="stat">345</span><span>affiliate stations</span></div>
-        <div><span class="stat">95</span><span>markets</span></div>
-        <div><span class="stat">95%</span><span>of U.S. Hispanics</span></div>
-        <div><span class="stat">#1</span><span>in 14 Hispanic DMAs</span></div>
+      <div class="net-stats">
+        <div class="net-strip">
+          <div><span class="stat">345</span><span>affiliate stations</span></div>
+          <div><span class="stat">95</span><span>markets</span></div>
+          <div><span class="stat">95%</span><span>of U.S. Hispanics</span></div>
+        </div>
+        <div class="net-one"><span class="stat">#1</span><span>in 14 Hispanic DMAs</span></div>
       </div>
       <p class="src">Ninety cents of every advertising dollar goes back to the affiliate stations, 141 of which are minority-owned.</p>
     </div>
@@ -449,32 +446,39 @@ const opportunity = [
   .soc em{font-style:normal;font-family:var(--head);font-size:.82rem;font-weight:600;
           font-variant-numeric:tabular-nums}
 
-  /* the sixth cell */
-  .tc-more{text-decoration:none;justify-content:center;align-items:flex-start;
-           padding:36px 32px;background:#fff;border:1px solid var(--line);color:var(--slate);gap:0}
-  .tc-more:hover{transform:translateY(-5px);border-color:var(--pretitle);
-                 box-shadow:0 26px 50px -24px rgba(23,166,223,.5)}
-  .more-i{width:62px;height:62px;border-radius:50%;background:var(--pretitle);color:#fff;
-          display:grid;place-items:center;margin-bottom:24px;
+  /* the sixth cell: no frame, just the line and one arrow, bottom right */
+  .tc-more{text-decoration:none;justify-content:space-between;align-items:stretch;
+           padding:36px 32px;background:transparent;border:0;box-shadow:none;color:var(--ink);gap:0}
+  .tc-more:hover{transform:none;box-shadow:none}
+  .tc-more h3{color:var(--ink);font-size:clamp(2rem,3.4vw,2.9rem);letter-spacing:-.03em;line-height:1.05;
+              margin:0;max-width:9ch;transition:color .2s}
+  .tc-more:hover h3{color:var(--pretitle)}
+  .more-i{align-self:flex-end;width:64px;height:64px;border-radius:50%;background:var(--pretitle);color:#fff;
+          display:grid;place-items:center;margin-top:28px;
           box-shadow:0 10px 26px -10px rgba(23,166,223,.8);transition:transform .25s ease}
   .more-i svg{width:30px;height:30px}
   .tc-more:hover .more-i{transform:translateX(6px)}
-  .tc-more h3{color:var(--ink);font-size:1.85rem;letter-spacing:-.024em;margin-bottom:12px;line-height:1.14}
-  .tc-more p{font-size:1.05rem;color:var(--slate);margin:0 0 22px;line-height:1.6}
-  .more-cta{display:inline-flex;align-items:center;gap:8px;font-family:var(--head);
-            font-weight:700;font-size:1.05rem;color:var(--pretitle)}
-  .more-cta svg{width:20px;height:20px;transition:transform .25s ease}
-  .tc-more:hover .more-cta svg{transform:translateX(5px)}
 
   /* ---------------- network ---------------- */
   .net{background:linear-gradient(140deg,#0E1A20 0%,#123243 58%,#0E1A20 100%)}
-  .net-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-top:48px;
-             padding:30px;background:rgba(255,255,255,.05);border-radius:16px;
-             border:1px solid rgba(255,255,255,.1)}
-  @media(max-width:700px){.net-strip{grid-template-columns:repeat(2,1fr);gap:26px}}
-  .net-strip div{display:flex;flex-direction:column;gap:5px}
-  .net-strip .stat{font-size:2.15rem;color:var(--cyan-br)}
-  .net-strip span:last-child{font-size:.84rem;color:#93A6B2}
+  /* three counts share one shaded panel; the #1 sits in its own box, edged in the hero gradient */
+  .net-stats{display:grid;grid-template-columns:3fr 1fr;gap:18px;margin-top:48px;text-align:center}
+  .net-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;align-items:start;
+             background:rgba(255,255,255,.06);border:1px solid var(--line-d);border-radius:18px;padding:30px 24px}
+  .net-strip div,.net-one{display:flex;flex-direction:column;gap:7px;align-items:center}
+  .net-strip .stat,.net-one .stat{font-size:2.4rem;color:var(--cyan-br)}
+  .net-strip span:last-child,.net-one span:last-child{font-size:.88rem;color:#93A6B2}
+  .net-one{justify-content:center;border-radius:18px;padding:30px 20px;
+           background:linear-gradient(#13212a,#13212a) padding-box,
+                      linear-gradient(118deg,#00A7E2,#1E7FE0 40%,#7C4DFF 76%,#C42BA6) border-box;
+           border:2px solid transparent;box-shadow:0 18px 44px -24px rgba(124,77,255,.7)}
+  .net-one .stat{font-size:2.9rem;color:#fff}
+  .net-one span:last-child{color:#C8D6DE}
+  @media(max-width:760px){
+    .net-stats{grid-template-columns:1fr}
+    .net-strip{grid-template-columns:repeat(3,1fr);gap:12px;padding:24px 12px}
+    .net-strip .stat{font-size:1.9rem}
+  }
 
   /* ---------------- opportunity ---------------- */
   .opp{margin-top:52px}
