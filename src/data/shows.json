@@ -91,7 +91,8 @@
     "accentText": "#00C5DC",
     "playInk": "#FFFFFF",
     "textOverride": true,
-    "playInkOverride": "#FFFFFF"
+    "playInkOverride": "#FFFFFF",
+    "followersTotal": "333K"
   },
   {
     "id": "buenas-tardes-el-patron",
@@ -175,7 +176,8 @@
     "cutout": "",
     "accentText": "#5B37CF",
     "panel": "#FC373E",
-    "playInk": "#FFFFFF"
+    "playInk": "#FFFFFF",
+    "followersTotal": "23K"
   },
   {
     "id": "la-mezcla-fuego",
@@ -260,7 +262,8 @@
     "cutout": "",
     "accentText": "#E9002D",
     "panel": "#5F34CA",
-    "playInk": "#FFFFFF"
+    "playInk": "#FFFFFF",
+    "followersTotal": "45.9K"
   },
   {
     "id": "los-40-usa",
@@ -278,7 +281,7 @@
     "daypart": "Weekend",
     "demo": "A 18–49",
     "credential": "The world's #1 Hispanic music brand",
-    "accent": "#009FFF",
+    "accent": "#007DFF",
     "audio": "/audio/los-40-usa.mp3",
     "photo": "/img/talent/los-40-usa-v3.jpg",
     "stats": [
@@ -344,9 +347,10 @@
     ],
     "logo": "",
     "cutout": "",
-    "accentText": "#0079C2",
+    "accentText": "#0073EB",
     "panel": "#ABF059",
-    "playInk": "#0E1A20"
+    "playInk": "#FFFFFF",
+    "followersTotal": "39.4K"
   },
   {
     "id": "minuto-deportivo",
@@ -430,6 +434,7 @@
     "cutout": "",
     "accentText": "#0148D4",
     "panel": "#011665",
-    "playInk": "#FFFFFF"
+    "playInk": "#FFFFFF",
+    "followersTotal": ""
   }
 ]

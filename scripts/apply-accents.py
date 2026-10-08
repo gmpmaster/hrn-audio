@@ -16,7 +16,7 @@ REQUESTED = {
     "echate-pa-ca":            "#00C5DC",   # Debbie, 2026-10-04: fill AND text, white play icon
     "buenas-tardes-el-patron": "#5B37CF",   # Debbie, 2026-10-04
     "la-mezcla-fuego":         "#FF224D",   # Debbie, 2026-10-04
-    "los-40-usa":              "#009FFF",   # Debbie, 2026-10-04 (new blue card art)
+    "los-40-usa":              "#007DFF",   # Debbie, 2026-10-07 (was #009FFF, read too teal)
     "minuto-deportivo":        "#0148D4",   # matches the new blue card art
 }
 

@@ -168,16 +168,20 @@ const opportunity = [
               ))}
             </div>
 
-            <div class="tc-social" data-needs-content="socials">
-              {t.socials.map((s) => (
-                <a class:list={['soc', { off: !s.url }]} href={s.url || undefined}
-                   target={s.url ? '_blank' : undefined} rel={s.url ? 'noopener noreferrer' : undefined}
-                   title={s.url ? `${t.host} on ${s.net}` : `${s.net} handle needed`}
-                   aria-label={s.url ? `${t.host} on ${s.net}` : `${s.net} handle needed`}>
-                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d={socialIcon[s.net]} /></svg>
-                  <em>{s.followers || '—'}</em>
-                </a>
-              ))}
+            <div class="tc-social">
+              {['instagram', 'facebook'].map((net) => {
+                const so = t.socials.find((x) => x.net === net);
+                const url = so?.url;
+                return (
+                  <a class:list={['soc', `soc-${net}`, { off: !url }]} href={url || undefined}
+                     target={url ? '_blank' : undefined} rel={url ? 'noopener noreferrer' : undefined}
+                     title={url ? `${t.host} on ${net}` : `${net} link needed`}
+                     aria-label={url ? `${t.host} on ${net}` : `${net} link needed`}>
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d={socialIcon[net]} /></svg>
+                  </a>
+                );
+              })}
+              {t.followersTotal && <span class="soc-total"><strong>{t.followersTotal}</strong> followers</span>}
             </div>
           </div>
         </article>
@@ -218,6 +222,11 @@ const opportunity = [
         </div>
       </div>
       <p class="src">Ninety cents of every advertising dollar goes back to the affiliate stations, 141 of which are minority-owned.</p>
+
+      <div class="band band-dark">
+        <p><strong>Own or program a station?</strong> Join the HRN family and carry the influencers your listeners already follow.</p>
+        <a href="#contact" class="btn btn-white" data-interest="affiliate">Become an affiliate</a>
+      </div>
     </div>
   </section>
 
@@ -227,6 +236,10 @@ const opportunity = [
       <div class="center">
         <p class="eyebrow">Reach. Connect. Engage.</p>
         <h2>Solutions that Speak the Language</h2>
+        <p class="lede" style="margin-top:16px">
+          From entertainment and lifestyle to news, sports, and regional music formats, HRN helps
+          your message resonate — not just reach.
+        </p>
       </div>
       <div class="grid g3 buy-grid" style="margin-top:56px">
         {buy.map(([t, d, c, icon]) => (
@@ -238,6 +251,11 @@ const opportunity = [
             <h3>{t}</h3><p>{d}</p>
           </div>
         ))}
+      </div>
+
+      <div class="band band-light">
+        <p><strong>Planning a Hispanic campaign?</strong> Brands and agencies, let's build the plan together.</p>
+        <a href="#contact" class="btn btn-primary" data-interest="advertising">Request a media plan</a>
       </div>
     </div>
   </section>
@@ -263,40 +281,76 @@ const opportunity = [
           </div>
         ))}
       </div>
-      <p class="src center" data-needs-content="sources">
-        <span class="flag">Verify</span>
-        Figures are drawn from public research and need a final source and date check before launch.
-      </p>
     </div>
   </section>
 
   <!-- ============================= CONTACT ============================ -->
   <section id="contact" class="cta">
-    <div class="wrap center">
-      <p class="eyebrow">Let's talk</p>
-      <h2>Tell us who you need to reach.</h2>
-      <p class="lede" style="margin-top:18px">
-        We'll come back with the influencers, the markets and the measurement — in writing.
-      </p>
+    <div class="wrap">
+      <div class="center">
+        <p class="eyebrow">Two audiences. One HRN.</p>
+        <h2>What are you here to grow?</h2>
+      </div>
 
-      <form name="audio-plan" method="POST" data-netlify="true" netlify-honeypot="company-url" class="f">
+      <div class="aud-grid">
+        <div class="aud-card" style="--c:#087CBC">
+          <p class="aud-eyebrow">Advertisers + Agencies</p>
+          <h3>Build a smarter Hispanic media plan.</h3>
+          <ul>
+            <li>Radio, digital audio and social working together</li>
+            <li>National reach with regional flexibility</li>
+            <li>Trusted influencers and custom integrations</li>
+            <li>Targeting, optimization and outcome reporting</li>
+          </ul>
+          <a href="#plan" class="btn aud-btn" data-interest="advertising">Request a media plan</a>
+        </div>
+        <div class="aud-card" style="--c:#5B5BEF">
+          <p class="aud-eyebrow">Stations + Broadcasters</p>
+          <h3>Grow your audience and your offering.</h3>
+          <ul>
+            <li>Proven syndicated shows and features</li>
+            <li>Turnkey 24/7 Hispanic formats</li>
+            <li>News, sports, music and lifestyle content</li>
+            <li>Affiliate support and national visibility</li>
+          </ul>
+          <a href="#plan" class="btn aud-btn" data-interest="affiliate">Become an affiliate</a>
+        </div>
+      </div>
+
+      <form id="plan" name="audio-plan" method="POST" data-netlify="true" netlify-honeypot="company-url" class="f">
         <input type="hidden" name="form-name" value="audio-plan" />
         <p class="hp"><label>Do not fill this out: <input name="company-url" /></label></p>
+        <p class="f-title">Tell us a little about you</p>
+        <select name="interest" aria-label="I'm interested in" required>
+          <option value="advertising">I'm an advertiser or agency</option>
+          <option value="affiliate">I'm a station interested in becoming an affiliate</option>
+        </select>
         <div class="f-row">
           <input type="text" name="name" placeholder="Name" required aria-label="Name" />
           <input type="email" name="email" placeholder="Email" required aria-label="Email" />
         </div>
         <div class="f-row">
-          <input type="text" name="company" placeholder="Company or agency" aria-label="Company or agency" />
+          <input type="text" name="company" placeholder="Company, agency or station" aria-label="Company, agency or station" />
           <input type="tel" name="phone" placeholder="Phone" aria-label="Phone" />
         </div>
-        <textarea name="message" placeholder="Who are you trying to reach?" aria-label="Message"></textarea>
-        <button type="submit" class="btn btn-primary">Request a plan</button>
+        <textarea name="message" placeholder="Tell us what you have in mind" aria-label="Message"></textarea>
+        <button type="submit" class="btn btn-primary">Send</button>
       </form>
 
-      <p class="src">Or call <a href="tel:+18882717521">(888) 271-7521</a></p>
+      <p class="src center">Or call <a href="tel:+18882717521">(888) 271-7521</a></p>
     </div>
   </section>
+
+  <script>
+    // Every "Become an affiliate" / "Request a media plan" button lands on the form with the
+    // right option already picked, so one form serves both audiences.
+    document.querySelectorAll('[data-interest]').forEach((a) => {
+      a.addEventListener('click', () => {
+        const sel = document.querySelector('#plan select[name="interest"]');
+        if (sel) sel.value = a.getAttribute('data-interest');
+      });
+    });
+  </script>
 </Base>
 
 <style>
@@ -476,6 +530,16 @@ const opportunity = [
   .soc{display:inline-flex;align-items:center;gap:6px;background:var(--mist);border-radius:999px;
        padding:7px 13px 7px 10px;color:var(--slate);text-decoration:none;transition:background .16s,color .16s}
   a.soc:hover{background:var(--c);color:#fff}
+  /* Instagram and Facebook in their own brand colours, then the combined total in the show's */
+  .soc-instagram{color:#E4405F}
+  .soc-facebook{color:#1877F2}
+  a.soc-instagram:hover{background:#E4405F;color:#fff}
+  a.soc-facebook:hover{background:#1877F2;color:#fff}
+  .tc-social .soc{padding:8px}
+  .tc-social .soc svg{width:19px;height:19px;flex-basis:19px}
+  .soc-total{margin-left:6px;align-self:center;font-size:.92rem;color:var(--slate)}
+  .soc-total strong{font-family:var(--head);font-size:1.15rem;font-weight:800;color:var(--ct);
+                    font-variant-numeric:tabular-nums}
   .soc.off{opacity:.45;pointer-events:none}
   .soc svg{width:17px;height:17px;fill:currentColor;flex:0 0 17px}
   .soc em{font-style:normal;font-family:var(--head);font-size:.82rem;font-weight:600;
@@ -524,7 +588,7 @@ const opportunity = [
   /* ---------------- opportunity ---------------- */
   .opp{margin-top:52px}
   /* one colour per column, from the about cards: thin full outline + the number in that colour */
-  .opp-c{background:#fff;border-radius:14px;padding:28px 24px;border:1.5px solid var(--c)}
+  .opp-c{background:#fff;border-radius:14px;padding:28px 24px;border:1.5px solid var(--c);text-align:center}
   .opp-v{font-size:2.7rem;font-weight:800;color:var(--c)}
   .opp-l{font-size:.95rem;color:var(--slate);margin:10px 0 0}
   .opp-s{font-size:.74rem;color:var(--slate-lt);margin:6px 0 0}
@@ -546,6 +610,37 @@ const opportunity = [
   .f button{justify-self:center;margin-top:6px;background:#fff;color:var(--ink);border-color:#fff}
   .f button:hover{background:#FFE45E;border-color:#FFE45E}
   .hp{position:absolute;left:-9999px}
+  .f select{font-family:var(--body);font-size:1rem;padding:15px 17px;border-radius:12px;
+            border:1.5px solid rgba(255,255,255,.45);background:rgba(255,255,255,.14);color:#fff}
+  .f select option{color:var(--ink)}
+  .f-title{font-family:var(--head);font-weight:700;font-size:1.25rem;color:#fff;margin:0 0 4px;text-align:center}
+
+  /* two audiences: white cards on the gradient, each in its own colour */
+  .aud-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;max-width:1040px;margin:44px auto 0}
+  @media(max-width:820px){.aud-grid{grid-template-columns:1fr}}
+  .aud-card{background:#fff;border-radius:18px;padding:38px 36px;text-align:left;
+            box-shadow:0 24px 50px -30px rgba(10,20,60,.55)}
+  .aud-eyebrow{font-family:var(--head);font-size:.78rem;font-weight:700;letter-spacing:.16em;
+               text-transform:uppercase;color:var(--c);margin:0 0 14px}
+  .aud-card h3{font-size:clamp(1.6rem,2.6vw,2.1rem);line-height:1.12;letter-spacing:-.025em;color:var(--ink);margin:0 0 22px}
+  .aud-card ul{list-style:none;padding:0;margin:0 0 28px}
+  .aud-card li{position:relative;padding:12px 0 12px 26px;border-bottom:1px solid var(--line);color:var(--ink-soft);font-size:.98rem}
+  .aud-card li::before{content:"";position:absolute;left:0;top:calc(12px + .8em);width:12px;height:1.5px;background:var(--c)}
+  .aud-btn{background:var(--c);border-color:var(--c);color:#fff}
+  .aud-btn:hover{background:var(--ink);border-color:var(--ink);color:#fff}
+  .cta .f{margin-top:56px}
+
+  /* in-section prompts that jump to the contact form */
+  .band{display:flex;align-items:center;justify-content:space-between;gap:22px;flex-wrap:wrap;
+        margin:44px auto 0;padding:26px 30px;border-radius:18px;text-align:left}
+  .band p{margin:0;font-size:1.05rem;flex:1 1 380px}
+  .band-dark{background:rgba(255,255,255,.06);border:1px solid var(--line-d)}
+  .band-dark p{color:#C8D6DE}
+  .band-dark strong{color:#fff}
+  .band-light{background:var(--mist);border:1px solid var(--line)}
+  .band-light p{color:var(--slate)}
+  .band-light strong{color:var(--ink)}
+  @media(max-width:600px){.band{text-align:center;justify-content:center}}
   .cta .src{color:rgba(255,255,255,.85)}
   .cta .src a{color:#fff;font-weight:700}
 </style>
