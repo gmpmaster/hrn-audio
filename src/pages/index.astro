@@ -303,6 +303,7 @@ const opportunity = [
             <li>Targeting, optimization and outcome reporting</li>
           </ul>
           <a href="#plan" class="btn aud-btn" data-interest="advertising">Request a media plan</a>
+          <p class="aud-contact"><a href="tel:+16462657331">(646) 265-7331</a><a href="mailto:clark.logan@genmediapartners.com">clark.logan@genmediapartners.com</a></p>
         </div>
         <div class="aud-card" style="--c:#5B5BEF">
           <p class="aud-eyebrow">Stations + Broadcasters</p>
@@ -314,6 +315,7 @@ const opportunity = [
             <li>Affiliate support and national visibility</li>
           </ul>
           <a href="#plan" class="btn aud-btn" data-interest="affiliate">Become an affiliate</a>
+          <p class="aud-contact"><a href="tel:+12123809323">(212) 380-9323</a><a href="mailto:aquintero@radioresources.com">aquintero@radioresources.com</a></p>
         </div>
       </div>
 
@@ -337,7 +339,8 @@ const opportunity = [
         <button type="submit" class="btn btn-primary">Send</button>
       </form>
 
-      <p class="src center">Or call <a href="tel:+18882717521">(888) 271-7521</a></p>
+      <p class="src center">Or reach us at <a href="tel:+16462657331">(646) 265-7331</a> ·
+        <a href="mailto:letsconnect@hrnmedianetworks.com">letsconnect@hrnmedianetworks.com</a></p>
     </div>
   </section>
 
@@ -613,6 +616,9 @@ const opportunity = [
   .f select{font-family:var(--body);font-size:1rem;padding:15px 17px;border-radius:12px;
             border:1.5px solid rgba(255,255,255,.45);background:rgba(255,255,255,.14);color:#fff}
   .f select option{color:var(--ink)}
+  /* a long option label must not widen the form past a phone screen */
+  .f > *, .f-row > *{min-width:0}
+  .f select{width:100%;max-width:100%;text-overflow:ellipsis}
   .f-title{font-family:var(--head);font-weight:700;font-size:1.25rem;color:#fff;margin:0 0 4px;text-align:center}
 
   /* two audiences: white cards on the gradient, each in its own colour */
@@ -628,6 +634,10 @@ const opportunity = [
   .aud-card li::before{content:"";position:absolute;left:0;top:calc(12px + .8em);width:12px;height:1.5px;background:var(--c)}
   .aud-btn{background:var(--c);border-color:var(--c);color:#fff}
   .aud-btn:hover{background:var(--ink);border-color:var(--ink);color:#fff}
+  /* the right person for each audience, from the Contact Us page of hrnmedianetworks.com */
+  .aud-contact{display:flex;flex-wrap:wrap;gap:6px 18px;margin:18px 0 0;font-size:.92rem}
+  .aud-contact a{color:var(--c);text-decoration:none;font-weight:600;overflow-wrap:anywhere}
+  .aud-contact a:hover{text-decoration:underline}
   .cta .f{margin-top:56px}
 
   /* in-section prompts that jump to the contact form */
